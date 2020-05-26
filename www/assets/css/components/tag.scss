@@ -1,0 +1,19 @@
+.tags-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .tag{
+    background: lightskyblue;
+    padding:5px;
+    cursor:pointer;
+    margin:5px;
+  }
+
+  .tag:after{
+    content: "\f1f8";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin:0 0 0 10px;
+  }
+}

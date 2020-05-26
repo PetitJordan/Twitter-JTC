@@ -1,0 +1,23 @@
+input.updated{
+  background-color: $updated;
+}
+
+.button-hover-input-wrapper{
+  position: relative;
+
+  .hover-input{
+    position: absolute;
+    right: 0;
+    top:0;
+    height:100%;
+    border-radius: 0 0.25rem 0.25rem 0;
+    display: inline-block;
+    background: #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    i{
+      vertical-align: middle;
+    }
+  }
+}

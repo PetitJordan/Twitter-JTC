@@ -1,0 +1,28 @@
+form{
+  .form-error-message{
+    color: $errorColor;
+    display: none;
+  }
+
+  .has-error{
+    input,
+    select,
+    textarea{
+      border:1px solid $errorColor;
+    }
+
+    .help-block{
+      color: $errorColor;
+    }
+
+    .form-error-message{
+      display: block;
+    }
+  }
+
+  .alert.alert-danger{
+    .list-unstyled{
+      margin:0;
+    }
+  }
+}

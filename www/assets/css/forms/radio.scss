@@ -1,0 +1,10 @@
+.radio-inline-block {
+  .radio {
+    display: inline-block;
+    margin: 0 0 0 15px;
+  }
+
+  .radio:first-child{
+    margin:0;
+  }
+}

@@ -1,0 +1,18 @@
+*[data-isPublish]:before{
+  content:"\f017";
+  font-family: "Font Awesome 5 Free";
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin:0 5px 0 0;
+}
+*[data-isPublish="current"]:before,
+*[data-isPublish="1"]:before{
+  color:#3c763d;
+}
+*[data-isPublish="incomming"]:before{
+  color:#31708f;
+}
+*[data-isPublish="expired"]:before,
+*[data-isPublish="0"]:before{
+  color:#a94442;
+}

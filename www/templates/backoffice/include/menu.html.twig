@@ -1,0 +1,58 @@
+<nav id="menu-sidebar">
+    <ul>
+        <li><a href="{{ path('backoffice/dashboard') }}" title="Dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+        <li>
+            <a href="#" title="Utilisateurs"><i class="fas fa-user-circle"></i> Utilisateurs</a>
+            <ul>
+                <li>
+                    <a href="">Liste</a>
+                    <a href="">Nouveau</a>
+                </li>
+                <li>
+                    <a href="" title="Optins"><i class="fas fa-at"></i> Optins</a>
+                </li>
+            </ul>
+        </li>
+
+
+
+        <li>
+            <a href="#" title="Réalisations"><i class="fas fa-newspaper"></i> Réalisations</a>
+            <ul>
+                <li>
+                    <a href="#">Cas clients & Réalisation</a>
+                    <ul>
+                        <li>
+                            <a href="{{ path('backoffice/customers') }}">Liste</a>
+                            <a href="{{ path('backoffice/customer/edit') }}">Nouveau</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">Logo de confiance</a>
+                    <ul>
+                        <li>
+                            <a href="{{ path('backoffice/trusted_customers') }}"> Liste</a>
+                            <a href="{{ path('backoffice/trusted_customer/edit') }}">Nouveau</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" title="Catégories"><i class="fas fa-newspaper"></i>Catégories</a>
+                    <ul>
+                        <li>
+                            <a href="{{ path('backoffice/expertises') }}">Liste</a>
+                            <a href="{{ path('backoffice/expertise/edit') }}">Nouveau</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="{{ path('index') }}"Voir le site</a>
+        </li>
+    </ul>
+</nav>

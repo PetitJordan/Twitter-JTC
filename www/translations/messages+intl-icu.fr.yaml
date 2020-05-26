@@ -1,0 +1,4 @@
+#############################################
+# CONSTRAINTS
+
+constraints.password.tooShort: 'Mot de passe trop court, {nb} caractères minimum'

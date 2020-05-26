@@ -1,0 +1,591 @@
+###########################################################################################
+###########################################################################################
+############################### FRONT
+
+test:
+  path:
+    fr: test
+  controller: App\Controller\Front\ContactController:editCandidature
+
+ajax/set-locale:
+  path: ajax/set-locale
+  controller: App\Controller\FrontController:ajaxSetLocale
+  options:
+    expose: true
+
+
+##########################################################
+################# HOME
+index:
+  path: /
+  controller: App\Controller\Front\HomeController::home
+
+##########################################################
+################# USER
+
+login:
+  path: identification
+  controller: App\Controller\Front\UserController:login
+
+logout:
+  path: deconnexion
+
+
+register:
+  path: inscription
+  controller: App\Controller\Front\UserController:register
+
+##########################################################
+################# ACTUALITIES
+
+###################
+###ACTUALITY
+front/actualites:
+  path: /actualites
+  controller: App\Controller\Front\ActualityController:readActuality
+
+###################
+###ACTUALITY DETAILS
+front/actuality-details:
+  path: /actualities/{id}/actuality-details
+  controller: App\Controller\Front\ActualityController:readActualityDetails
+  defaults:
+    id: 0
+    requirements:
+      id: '[0-9]+'
+
+ajax/filtre-actualities:
+  path: ajax/filtre-actualities
+  controller: App\Controller\Front\ActualityController::filter
+  options:
+    expose: true
+
+##########################################################
+################# CUSTOMERS
+
+###################
+###CUSTOMERS DETAILS
+front/customers-details:
+  path: /customers/{slug}
+  controller: App\Controller\Front\CustomerController:readCustomerDetails
+  defaults:
+    id: 0
+    requirements:
+      id: '[0-9]+'
+
+###################
+###REALISATIONS
+front/realisations:
+  path: /realisations
+  controller: App\Controller\Front\CustomerController:readRealisation
+
+###################
+###REALISATIONS
+front/realisation-filtre:
+  path: /realisations-filtre
+  controller: App\Controller\Front\CustomerController:filtreExpertiseAjax
+
+
+
+##########################################################
+################# JOBS
+
+front/rejoignez-nous:
+  path: /rejoignez-nous
+  controller: App\Controller\Front\JobController:listJob
+
+front/offer-details:
+  path: /rejoignez-nous/{id}/offer-details
+  controller: App\Controller\Front\JobController:readJobDetails
+  defaults:
+    id: 0
+    requirements:
+      id: '[0-9]+'
+
+##########################################################
+################# CONTACT
+front/contactez-nous:
+    path: /contactez-nous
+    controller: App\Controller\Front\ContactController:contactFormCreate
+    defaults:
+      id: 0
+      requirements:
+        id: '[0-9]+'
+
+##########################################################
+################# CANDIDATURE
+front_candidature:
+  path: /candidature
+  controller: App\Controller\Front\ContactController:candidacyFormCreate
+
+##########################################################
+################# STATIC PAGE
+
+###################
+### HISTORY
+front/histoire:
+  path: /histoire
+  controller: App\Controller\Front\StaticPageController:History
+
+###################
+### QUI SOMMES NOUS
+front/qui-sommes-nous:
+  path: /qui-sommes-nous
+  controller: App\Controller\Front\StaticPageController:QuiSommesNous
+
+###################
+### POLICY
+front/policy:
+  path: /policy
+  controller: App\Controller\Front\StaticPageController:Policy
+
+###################
+### LEGAL NOTICE
+front/legalNotice:
+  path: /mentions-legales
+  controller: App\Controller\Front\StaticPageController:LegalNotice
+
+
+###################
+### L'EQUIPE
+front/equipe:
+  path: /equipe
+  controller: App\Controller\Front\StaticPageController:equipe
+
+
+###################
+### METHODOLOGIE
+front/methodologie:
+  path: /methodologie
+  controller: App\Controller\Front\StaticPageController:methodologie
+
+
+##########################################################
+################# SITEMAP
+
+sitemap:
+  path: sitemap.xml
+  controller: App\Controller\Front\SitemapController:sitemap
+
+##########################################################
+################# ROBOTS
+
+robots.txt:
+  path: robots.txt
+  controller: App\Controller\Front\RobotsController:page
+
+
+
+
+
+###########################################################################################
+###########################################################################################
+############################### BACKOFFICE
+
+##########################################################
+################# COMMON
+
+backoffice/ajax-edit:
+  path: backoffice/ajax-edit
+  controller: App\Controller\Backoffice\BackofficeController:ajaxEdit
+  options:
+    expose: true
+
+backoffice/ajax-sort:
+  path: backoffice/ajax-sort
+  controller: App\Controller\Backoffice\BackofficeController:ajaxSort
+  options:
+    expose: true
+
+backoffice/ajax-upload-media:
+  path: backoffice/ajax-upload-media
+  controller: App\Controller\Backoffice\BackofficeController:ajaxUploadMedia
+  options:
+    expose: true
+
+backoffice/ajax-delete-file:
+  path: backoffice/ajax-delete-file
+  controller: App\Controller\Backoffice\BackofficeController:ajaxDeleteFile
+  options:
+    expose: true
+
+backoffice/ajax-toggle-unique:
+  path: backoffice/ajax-toggle-unique
+  controller: App\Controller\Backoffice\BackofficeController:ajaxToggleUnique
+  options:
+    expose: true
+
+
+
+##########################################################
+################# DASHBOARD
+
+backoffice/dashboard:
+  path: backoffice
+  controller: App\Controller\Backoffice\DashboardController:dashboard
+
+
+##########################################################
+################# CONFIGURATION
+
+backoffice/config/languages:
+  path: backoffice/config/languages
+  controller: App\Controller\Backoffice\LanguageController:list
+
+backoffice/config/language/edit:
+  path: backoffice/config/language/{id}/edit
+  controller: App\Controller\Backoffice\LanguageController:edit
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+##########################################################
+################# USER
+
+backoffice/users:
+  path: backoffice/users
+  controller: App\Controller\Backoffice\UserController:listUser
+
+backoffice/user/edit:
+  path: backoffice/user/{id}/edit
+  controller: App\Controller\Backoffice\UserController:editUser
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+backoffice/user/change-password:
+  path: backoffice/user/{id}/change-password
+  controller: App\Controller\Backoffice\UserController:changePassword
+  requirements:
+    id: '[0-9]+'
+
+##########################################################
+################# OPTIN
+
+backoffice/user/optins:
+  path: backoffice/user/optins
+  controller: App\Controller\Backoffice\User\OptinController:list
+
+backoffice/user/optin/delete:
+  path: backoffice/user/optin/{id}/delete/
+  controller: App\Controller\Backoffice\User\OptinController:delete
+  requirements:
+    id: '[0-9]+'
+
+##########################################################
+################# ACTUALITY / CATEGORY / ADDPUSH
+
+###################
+### ACTUALITY
+
+
+backoffice/actualities-dashboard:
+  path: backoffice/actualities-dashboard
+  controller: App\Controller\Backoffice\ActualityController:dashBoard
+
+backoffice/actualities:
+  path: backoffice/actualities
+  controller: App\Controller\Backoffice\ActualityController:listActuality
+
+backoffice/actuality/edit:
+  path: backoffice/actuality/{id}/edit
+  controller: App\Controller\Backoffice\ActualityController:editActuality
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+backoffice/actuality/delete:
+  path: backoffice/actuality/{id}/delete
+  controller: App\Controller\Backoffice\ActualityController:deleteActuality
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+###################
+### CATEGORY
+
+backoffice/actuality-categories:
+  path: backoffice/actuality-categories
+  controller: App\Controller\Backoffice\ActualityController:listCategory
+
+backoffice/actuality-category/edit:
+  path: backoffice/actuality-category/{id}/edit
+  controller: App\Controller\Backoffice\ActualityController:editCategory
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+backoffice/actuality-category/delete:
+  path: backoffice/actuality-category/{id}/delete
+  controller: App\Controller\Backoffice\ActualityController:deleteCategory
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+###################
+### CATEGORY
+
+backoffice/tags:
+  path: backoffice/tag
+  controller: App\Controller\Backoffice\ActualityController:listTags
+
+backoffice/tag/edit:
+  path: backoffice/tag/{id}/edit
+  controller: App\Controller\Backoffice\ActualityController:editTag
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+backoffice/tag/delete:
+  path: backoffice/tag/{id}/delete
+  controller: App\Controller\Backoffice\ActualityController:deleteTag
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+
+
+###################
+### ADDPUSH
+
+backoffice/addpushs:
+  path: backoffice/addpushs
+  controller: App\Controller\Backoffice\ActualityController:listAddpush
+
+backoffice/addpush/edit:
+  path: backoffice/addpush/{id}/edit
+  controller: App\Controller\Backoffice\ActualityController:editAddpush
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+backoffice/addpush/delete:
+  path: backoffice/addpush/{id}/delete
+  controller: App\Controller\Backoffice\ActualityController:deleteAddpush
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+##########################################################
+################# CUSTOMMER / TRUSTED CUSTOMMER / EXPERTISE
+
+###################
+### CUSTOMER
+backoffice/customers:
+  path: backoffice/customers
+  controller: App\Controller\Backoffice\CustomerController:listCustomer
+
+backoffice/customer/edit:
+  path: backoffice/customer/{id}/edit
+  controller: App\Controller\Backoffice\CustomerController:editCustomer
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+backoffice/customer/delete:
+  path: backoffice/customer/{id}/delete
+  controller: App\Controller\Backoffice\CustomerController:deleteCustomer
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+    
+
+###################
+### TRUSTED CUSTOMER
+
+backoffice/trusted_customers:
+  path: backoffice/trusted_customers
+  controller: App\Controller\Backoffice\CustomerController:listTrustedCustomer
+
+backoffice/trusted_customer/edit:
+  path: backoffice/trusted_customer/{id}/edit
+  controller: App\Controller\Backoffice\CustomerController:editTrustedCustomer
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+backoffice/trusted_customer/delete:
+  path: backoffice/trusted_customer/{id}/delete
+  controller: App\Controller\Backoffice\CustomerController:deleteTrustedCustomer
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+###################
+### EXPERTISE
+
+backoffice/expertises:
+  path: backoffice/expertises
+  controller: App\Controller\Backoffice\CustomerController:listExpertise
+
+backoffice/expertise/edit:
+  path: backoffice/expertise/{id}/edit
+  controller: App\Controller\Backoffice\CustomerController:editExpertise
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+backoffice/expertise/delete:
+  path: backoffice/expertise/{id}/delete
+  controller: App\Controller\Backoffice\CustomerController:deleteExpertise
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+##########################################################
+################# JOB / TECHNIQUES
+
+###################
+### JOB
+backoffice/jobs:
+  path: backoffice/jobs
+  controller: App\Controller\Backoffice\JobController:listJob
+
+backoffice/job/edit:
+  path: backoffice/job/{id}/edit
+  controller: App\Controller\Backoffice\JobController:editJob
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+backoffice/job/delete:
+  path: backoffice/job/{id}/delete
+  controller: App\Controller\Backoffice\JobController:deleteJob
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+###################
+### TECHNIQUES
+
+backoffice/techniques:
+  path: backoffice/techniques
+  controller: App\Controller\Backoffice\JobController:listTechnique
+
+backoffice/technique/edit:
+  path: backoffice/technique/{id}/edit
+  controller: App\Controller\Backoffice\JobController:editTechnique
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+backoffice/technique/delete:
+  path: backoffice/technique/{id}/delete
+  controller: App\Controller\Backoffice\JobController:deleteTechnique
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+##########################################################
+################# TESTIMONY
+
+backoffice/testimonies:
+  path: backoffice/testimonies
+  controller: App\Controller\Backoffice\TestimonyController:listTestimony
+
+backoffice/testimony/edit:
+  path: backoffice/testimony/{id}/edit
+  controller: App\Controller\Backoffice\TestimonyController:editTestimony
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+backoffice/testimony/delete:
+  path: backoffice/testimony/{id}/delete
+  controller: App\Controller\Backoffice\TestimonyController:deleteTestimony
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+##########################################################
+################# CONTACT
+
+backoffice/contacts:
+  path: backoffice/contacts
+  controller: App\Controller\Backoffice\ContactController:listContact
+
+backoffice/contact/edit:
+  path: backoffice/contact/{id}/edit
+  controller: App\Controller\Backoffice\ContactController:readContact
+  defaults:
+    id: 0
+    requirements:
+      id: '[0-9]+'
+
+backoffice/contact/delete:
+  path: backoffice/contact/{id}/delete
+  controller: App\Controller\Backoffice\ContactController:deleteContact
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+##########################################################
+################# CANDIDATURE
+
+backoffice/candidatures:
+  path: backoffice/candidatures
+  controller: App\Controller\Backoffice\ContactController:listCandidature
+
+backoffice/candidature/edit:
+  path: backoffice/candidature/{id}/edit
+  controller: App\Controller\Backoffice\ContactController:readCandidature
+  defaults:
+    id: 0
+    requirements:
+      id: '[0-9]+'
+
+backoffice/candidature/delete:
+  path: backoffice/candidature/{id}/delete
+  controller: App\Controller\Backoffice\ContactController:deleteCandidature
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+
+##########################################################
+################# CANDIDATURE
+
+backoffice/team:
+  path: backoffice/team
+  controller: App\Controller\Backoffice\EquipeController:listTeam
+
+backoffice/team/edit:
+  path: backoffice/team/{id}/edit
+  controller: App\Controller\Backoffice\EquipeController:editTeam
+  defaults:
+    id: 0
+    requirements:
+      id: '[0-9]+'
+
+backoffice/team/delete:
+  path: backoffice/team/{id}/delete
+  controller: App\Controller\Backoffice\EquipeController:deleteTeam
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'

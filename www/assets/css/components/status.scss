@@ -1,0 +1,31 @@
+*[data-isStatus]:before{
+  font-family: "Font Awesome 5 Free";
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin:0 5px 0 0;
+}
+/* valide */
+*[data-isStatus="1"]:before{
+  content: "\f058";
+  color:#3c763d;
+}
+/* brouillon */
+*[data-isStatus="2"]:before{
+  content: "\f303";
+  color:#31708f;
+}
+/* en attente validation */
+*[data-isStatus="3"]:before{
+  content: "\f017";
+  color:#31708f;
+}
+/* refuse */
+*[data-isStatus="4"]:before{
+  content: "\f057";
+  color:#a94442;
+}
+/* annulé  */
+*[data-isStatus="5"]:before{
+  content: "\f05e";
+  color:#a94442;
+}

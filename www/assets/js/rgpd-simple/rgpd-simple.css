@@ -1,0 +1,37 @@
+.rgpd-banner {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    width: 96vw;
+    margin: 0 auto;
+    bottom: 2vh;
+    left: 2vw;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 30px #0000004D;
+    border-radius: 20px 0px 20px 20px;
+    padding: 15px;
+}
+
+.rgpd-banner .title{
+    margin: 0 0 20px 0;
+}
+.rgpd-banner .infos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media (max-width:1199px){
+    .rgpd-banner .infos {
+        flex-direction: column;
+    }
+}
+
+.rgpd-banner .links {
+    flex-shrink: 0;
+}
+.rgpd-banner .links a{
+    margin: 0 0 10px 0;
+}
+.rgpd-banner .links a:first-child{
+    margin: 0 10px 10px 0;
+}

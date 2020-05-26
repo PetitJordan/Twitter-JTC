@@ -1,0 +1,15 @@
+.has-elt{
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+
+  *{
+    margin: 0 10px 10px 0;
+  }
+}
+.has-elt.valid{
+  color: $validColor;
+}
+.has-elt.error{
+  color: $errorColor;
+}

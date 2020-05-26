@@ -1,0 +1,102 @@
+.form-group.form-control-width-auto{
+  .form-control{
+    width: auto;
+  }
+}
+
+.form-group-display-inline-block{
+  >div{
+    >div {
+      display: inline-block;
+    }
+  }
+}
+
+
+.compulsory:after{
+  content: ' *';
+  color: $errorColor;
+}
+
+
+//modif bouton upload
+
+#FakeInput {
+  position: relative;
+  overflow: hidden;
+
+  input {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  span:first-child {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 150px;
+    height: 25px;
+    padding-left: 5px;
+    border: 1px solid #ccc;
+    text-overflow: ellipsis;
+    font: 100%/25px sans-serif;
+    color: #666;
+    border-radius: 3px;
+  }
+
+  span + span {
+    margin-left: 5px;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: underline;
+    margin-bottom: 10px;
+  }
+
+}
+
+.captcha{
+  //width: 30% !important;
+  margin: 30px auto 0!important;
+
+  @include media-breakpoint-down(lg) {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 575px){
+  #rc-imageselect,
+  .g-recaptcha {
+    transform:scale(0.77);
+    transform-origin:0;
+    transform:scale(0.77);
+    transform-origin:0 0;
+    -webkit-transform:scale(0.77);
+    transform:scale(0.77);
+    -webkit-transform-origin:0 0;
+    transform-origin:0 0;
+  }
+}
+
+.form-group{
+  input{
+    padding-left: 0;
+  }
+  textarea{
+    padding-left: 0;
+  }
+}
+.contact-btn .form-group{
+  text-align: right;
+  @include media-breakpoint-down(lg) {
+    text-align: center;
+  }
+}

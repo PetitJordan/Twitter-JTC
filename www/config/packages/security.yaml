@@ -1,0 +1,59 @@
+security:
+    # système d'encodage choisi pour le mot de passe
+    encoders:
+        App\Entity\User\User:
+            algorithm: bcrypt
+    # strategy can be: none, migrate, invalidate
+    session_fixation_strategy:  none
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        our_db_provider:
+            entity:
+                # l'entité utilisé pour fournir les utilisateurs
+                class: App\Entity\User\User
+                # le champ utilisé comme login
+                property: email
+                # if you're using multiple entity managers
+                # manager_name: customer
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            pattern:    ^/
+            http_basic: false
+            provider: our_db_provider
+            logout:
+                # La route où se trouve le process de deconnexion
+                path:   /deconnexion
+                # La route sur laquelle doit etre rediriger l'utilisateur apres une deconnexion
+                target: /
+                handlers: [app.logout.listener]
+                
+            form_login:
+                # Le nom de la route où se trouve le formulaire de connexion
+                # Si un utilisateur tente d'acceder à une page protégée sans en avoir les droits
+                # il sera redirigé sur cette page
+                login_path: login
+                # Le nom de la route de la page de connexion
+                check_path: login
+                # Securisation des formulaires
+                #csrf_token_generator: security.csrf.token_manager
+                # La page par defaut apres une connexion reussie
+                #default_target_path: admin
+            # activate different ways to authenticate
+            # http_basic: true
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            # form_login: true
+            # https://symfony.com/doc/current/security/form_login_setup.html
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/backoffice, roles: ROLE_ADMIN }
+
+    # héritage des roles, ici le role admin hérite des droits du users,
+    # le super admin des droits de l'admin, etc...
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_USER]

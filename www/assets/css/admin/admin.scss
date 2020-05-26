@@ -1,0 +1,121 @@
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.min.css";
+@import "../../js/hc-offcanvas/hc-offcanvas-nav.css";
+
+/**********************************************************
+IMPORT CSS
+ */
+
+@import "../variables";
+@import "../functions";
+@import "../reset";
+
+@import "../components/btn";
+@import "../components/login";
+@import "../components/title";
+@import "../components/collapsable-card";
+@import "../components/table";
+@import "../components/alert";
+@import "../components/publish";
+@import "../components/utils";
+@import "../components/status";
+@import "../components/tag";
+@import "../components/has-elt";
+@import "../components/nav-tab";
+
+@import "../forms/form";
+@import "../forms/checkbox";
+@import "../forms/radio";
+@import "../forms/password";
+@import "../forms/datepicker";
+@import "../forms/input";
+@import "../forms/error";
+@import "../forms/textarea";
+@import "../forms/fieldset";
+@import "../forms/select";
+
+@import "menu-sidebar";
+/**********************************************************
+OVERRIDES
+ */
+
+// Override datatable
+.custom-select{
+  background: none;
+}
+
+// override bootstrap
+.card-header{
+  .fa {
+    transition: .3s transform ease-in-out;
+  }
+
+  .collapsed .fa {
+    transform: rotate(90deg);
+  }
+}
+
+/**********************************************************
+GENERAL
+ */
+
+body{
+  color: $txt_color_dark;
+}
+
+/**********************************************************
+HEADER PAGE CONTAINER
+ */
+.header-page-container a{
+  font-size:0.7rem;
+}
+/**********************************************************
+PAGE CONTAINER
+ */
+.page-container {
+  min-height: 100vh;
+  padding-left: 240px;
+  -webkit-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.page-container .header-page-container{
+  padding:5px;
+  border-bottom:1px solid #cccccc;
+  height: 65px;
+  text-align: right;
+}
+
+/** MD et en dessous **/
+@include media-breakpoint-down(md) {
+  .page-container {
+    min-height: auto;
+    padding-left: 0;
+  }
+
+  .page-container .header-page-container{
+    padding:5px;
+    border-bottom:1px solid #cccccc;
+    height: 65px;
+    text-align: right;
+  }
+}
+
+#preloader{
+  display: none;
+  position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9999999;
+  //background: rgba(0,0,0,0.5);
+}
+#preloader img{
+  margin: auto;
+  display: block;
+  margin-top: calc(50vh - 100px);
+}

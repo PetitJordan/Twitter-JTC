@@ -1,0 +1,139 @@
+/*********************************************
+    IMPORT BOOTSRAP
+ */
+@import "~bootstrap/scss/bootstrap";
+@import "~jquery-ui/themes/base/all.css";
+@import "../js/hc-offcanvas/hc-offcanvas-nav.css";
+
+/**********************************************************
+IMPORT DES FICHIERS SCSS
+ */
+
+@import "variables";
+@import "functions";
+@import "reset";
+
+
+@import "components/btn";
+@import "components/login";
+@import "components/title";
+@import "components/alert";
+@import "components/utils";
+
+
+@import "forms/checkbox";
+@import "forms/radio";
+@import "forms/password";
+@import "forms/datepicker";
+@import "forms/error";
+@import "forms/form";
+
+@import "pages/home";
+
+@import "pages/customer/customer";
+@import "pages/customer/responsive_customer";
+@import "pages/customer/trustedCustomer.scss";
+
+
+@import "pages/customer/customer_details.scss";
+@import "pages/customer/responsive_customer_details.scss";
+
+/**********************************************************
+OVERRIDES
+ */
+
+
+/**********************************************************
+GENERAL
+ */
+body {
+  color:$txt_color_dark;
+  font-family: Barlow, sans-serif;
+  background-repeat: no-repeat!important;
+  background-position: top right!important;
+
+  /** A partir de **/
+  @include media-breakpoint-up(xs) {
+
+  }
+
+  /** En dessous de **/
+  @include media-breakpoint-down(xs) {
+
+  }
+}
+.color_white{
+  color: $txt_color_light;
+}
+
+.background_white{
+  background: $txt_color_light;
+}
+.color_ds{
+  color: $text_color_ds;
+}
+.background_ds{
+  background: $text_color_ds;
+}
+.txt-orange{
+  color: $main_color;
+}
+
+.background-orange{
+  background: #F7941D;
+  color: #ffffff;
+  border: 1px solid #F7941D!important;
+}
+
+/**********************************************************
+HEADER
+ */
+@import "header";
+
+#reseaux {
+  margin: auto;
+  margin-bottom: 10.4vw;
+}
+#reseaux ul {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#reseaux ul li {
+  border: solid 2px;
+  list-style: none;
+  margin: 0 9px;
+  padding: 10px;
+  width: 60px;;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+#reseaux ul li a {
+  color: #1e1e1e;
+  font-size: 30px;
+}
+#reseaux ul li:hover {
+  color: #f7941d;
+}
+#reseaux ul li:hover a {
+  color: #f7941d;
+}
+
+#preloader{
+  display: none;
+  position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9999999;
+  //background: rgba(0,0,0,0.5);
+}
+#preloader img{
+  margin: auto;
+  display: block;
+  margin-top: calc(50vh - 100px);
+}

@@ -1,0 +1,42 @@
+select.flat {
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-weight:normal;
+  cursor:pointer;
+}
+/*target Internet Explorer 9 and Internet Explorer 10:*/
+@media screen and (min-width:0\0) {
+  select.flat {
+    background:none;
+    padding: 5px;
+  }
+}
+
+label.flat {position:relative;display:block;}
+label.flat.d-inline-block {position:relative;display:inline-block;}
+label.flat:after {
+  content:"\f078";
+  font-family: "FontAwesome";
+  font-size: 11px;
+  color:#e75031;
+  right:8px;
+  top:8px;
+  padding:0 0 2px;
+  position:absolute;
+  pointer-events:none;
+  line-height: 1.42857;
+  cursor:pointer;
+}
+label.flat:before {
+  content:'';
+  right:4px;
+  top:3px;
+  width:23px;
+  height:18px;
+  background:#fff;
+  position:absolute;
+  pointer-events:none;
+  display:block;
+}

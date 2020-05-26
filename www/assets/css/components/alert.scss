@@ -1,0 +1,24 @@
+/**********************************************************
+ALERTS
+ */
+
+.alert-fixed{
+  position: fixed;
+  z-index: 99999999999;
+  top:30%;
+  width:100%;
+  text-align: center;
+
+  .alert{
+    cursor:pointer;
+    display:inline-block;
+
+    .button{
+      margin-left:20px;
+    }
+  }
+}
+
+.alert-center{
+  margin:0 auto;
+}

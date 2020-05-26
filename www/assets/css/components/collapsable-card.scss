@@ -1,0 +1,37 @@
+/**********************************************************
+COLLAPSABLE CARD
+ */
+
+.collapsable-card{
+  margin:0 0 15px 0;
+
+  .card-header{
+    a{
+      display:block;
+      text-decoration: none;
+    }
+
+    a:after{
+      content:"\f078";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      margin:0 0 0 15px;
+    }
+  }
+
+  .card-body{
+    display:none;
+  }
+}
+
+.collapsable-card.open{
+  .card-header{
+    a:after{
+      content:"\f077";
+    }
+  }
+
+  .card-body{
+    display: block;
+  }
+}

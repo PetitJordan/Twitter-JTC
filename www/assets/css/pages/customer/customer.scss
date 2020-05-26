@@ -1,0 +1,289 @@
+/************************************************  Partie  concernant les customers sur la home  ************************************************/
+
+#home_customers {
+  background-color: #F2F2F2;
+  padding: 10.4vw 4.68vw 5vw 4.68vw;
+  margin: 0 3.125vw;
+  z-index: 2;
+  position: relative;
+
+  h2 {
+    margin-bottom: 25px;
+  }
+
+  #customer-content .no-pm:last-child hr {
+    height: 25vw;
+    position: absolute;
+  }
+
+  .bloc-left {
+    .img-bloc, .expertises, .links {
+      margin-right: 40px;
+    }
+
+    .description {
+      align-self: flex-start;
+    }
+  }
+
+  .bloc-right {
+    .img-bloc, .expertises, .links {
+      margin-left: 40px;
+    }
+
+    .description {
+      align-self: flex-end;
+    }
+  }
+
+  .description {
+    background-color: #1E1E1E;
+    width: 18.75vw;
+    padding: 25px;
+    z-index: 3;
+    color: $txt_color_light;
+    position: relative;
+    top: -4vw;
+
+    .fleche {
+      float: right;
+    }
+  }
+
+  .btn-ds {
+    display: flex;
+    z-index: 3;
+    margin: auto;
+    margin-top: 12vw;
+    width: -moz-max-content;
+    width: max-content;
+  }
+}
+
+/************************************************  Partie concernant les customers sur la page realisation  ************************************************/
+
+#realisation {
+  padding: 0 7.8vw 20vw 7.8vw;
+
+
+  h1 {
+    text-align: center;
+    margin-bottom: 9.11vw;
+  }
+
+  h2 {
+    font-weight: bold;
+  }
+
+  #filtrer, #close-expertises {
+    display: none;
+  }
+
+  #expertise-filtre {
+    #expertises {
+      display: flex;
+      justify-content: center;
+      padding-top: 15px;
+      padding-bottom: 10.4vw;
+      flex-wrap: wrap;
+    }
+
+    p {
+      border: 1px solid #707070;
+      border-radius: 17px;
+      margin-left: 20px;
+      padding: 5px 20px;
+      cursor: pointer;
+    }
+
+    .active {
+      background-color: $main_color;
+      color: white;
+      border-color: $main_color;
+    }
+
+    .reset_filter {
+      background-color: $main_color;
+      color: white;
+      border-color: $main_color;
+    }
+  }
+
+  .bloc-left {
+    .expertises {
+      justify-content: flex-end;
+    }
+
+    .separator-content {
+      width: 100%;
+    }
+
+    .separator-content > div:first-of-type {
+      margin-right: 40px;
+      width: 100%;
+    }
+  }
+
+  .bloc-right {
+    width: 100%;
+
+    .separator-content {
+      width: 100%;
+    }
+
+    .separator-content > div:first-of-type {
+      width: 100%;
+      margin-left: 40px;
+    }
+  }
+
+
+  .expertises {
+    display: flex;
+    margin-bottom: 1.53vw;
+    flex-wrap: wrap;
+
+    p {
+      border: 1px solid #707070;
+      border-radius: 17px;
+      margin-right: 20px;
+      padding: 5px 20px;
+      text-align: center;
+    }
+
+    .active {
+      background-color: $main_color;
+      color: white;
+      border-color: $main_color;
+    }
+  }
+
+  .links {
+    margin-top: 2.53vw;
+    display: flex;
+    z-index: 100;
+
+    .links-container {
+      margin-right: 1.53vw;
+    }
+  }
+
+  #customer-content .no-pm:last-child hr {
+    height: 29vw;
+  }
+
+  #customer-content .no-pm:last-child hr:after {
+    content: url('../../../images/realisations/last_hr.png');
+    position: absolute;
+    bottom: -20px;
+    right: -25px;
+  }
+}
+
+/************************************************  Partie commune à plusieurs pages concernant les customers  ************************************************/
+
+#home_customers, #realisation {
+
+  .no-pm {
+    padding: 0;
+    margin: 0;
+  }
+
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .bloc-left, .bloc-right {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  .bloc-left{
+    margin-top: -20%;
+    @include media-breakpoint-down(md) {
+      margin-top: 20px;
+    }
+  }
+  .bloc-right:not(:first-child){
+    margin-top: -15%;
+    @include media-breakpoint-down(md) {
+      margin-top: 20px;
+    }
+  }
+
+  .relative-row {
+    margin-bottom: -1.5vw;
+    position: relative;
+    //height: 20vw;
+  }
+
+  .content {
+    width: 100%;
+    height: 100%;
+    //position: absolute;
+    top: 4vw;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    z-index: 3;
+  }
+
+  h3 {
+    font-weight: bold;
+  }
+
+  .project-name {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .separator-content {
+    display: flex;
+    position: relative;
+    padding-top: 30px;
+
+    hr {
+      height: 12vw;
+      border: none;
+      border-left: 1px solid #707070;
+      margin-top: 0;
+    }
+
+    .img-bloc {
+      height: auto;
+      overflow: hidden;
+      box-shadow: 14px 13px 38px -12px rgba(0, 0, 0, 0.75);
+
+      img, {
+        width: 100%;
+      }
+    }
+  }
+
+  .separator {
+    display: none;
+    height: 50px;
+    width: 0px;
+    margin: 20px auto;
+    border: 1px solid #707070;
+  }
+
+
+  .bloc-left {
+    align-items: flex-end;
+
+    .content {
+      align-items: flex-end;
+    }
+  }
+
+  .bloc-right {
+    align-items: flex-start;
+
+    .content {
+      align-items: flex-start;
+    }
+  }
+}
+

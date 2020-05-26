@@ -1,0 +1,89 @@
+/************************************************  Partie  concernant les trustedCustomers sur la home  ************************************************/
+
+#home_trusted_customers{
+  padding: 2.6vw 7.8vw 10.4vw 7.8vw;
+
+  h2{
+    margin-bottom: 9.6vw;
+    text-align: left;
+  }
+  #customer_slider{
+    display:flex;
+    width: 100%;
+  }
+  .col-12, .col-md{
+    text-align: center;
+  }
+  a{
+    display:flex;
+  }
+  .img-bloc{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+
+    img{
+      margin: auto;
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+
+  #home_trusted_customers {
+    padding: 13.3vw 3.125vw;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+
+  #home_trusted_customers {
+    padding: 13.3vw 3.9vw;
+  }
+}
+
+@include media-breakpoint-down(xs) {
+
+  #home_trusted_customers {
+    padding: 13.3vw 4.16vw;
+
+    h2 {
+      margin-bottom: 13.3vw;
+      text-align: center;
+    }
+    .bx-wrapper{
+      margin: auto;
+    }
+    #customer_slider{
+      display:block;
+    }
+    .col-12{
+      height: 38.89vw;
+    }
+
+    .bx-pager {
+      display: flex;
+      margin-top: 5%;
+
+      div {
+        width: 25%;
+
+        a {
+          border: solid 5px #EFEFEF;
+          width: 100%;
+          display: block;
+          font-size: 0;
+        }
+      }
+
+      a.active {
+        border: solid 5px #F7941D;
+        width: 100%;
+        display: block;
+        font-size: 0;
+        border-radius: 10px;
+      }
+    }
+
+  }
+}

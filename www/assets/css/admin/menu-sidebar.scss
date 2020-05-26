@@ -1,0 +1,36 @@
+/*********************************************
+OVERRIDE DE HCOFFCANVAS POUR VERSION DESKTOP
+ */
+#menu-sidebar{
+  display: none;
+}
+.hc-offcanvas-nav{
+  .nav-close{
+    a:hover{
+      color: #FFFFFF;
+    }
+  }
+
+  .nav-wrapper-2 {
+    a{
+      padding:14px 17px 14px 27px;
+    }
+  }
+}
+
+
+/** MD et au dessus **/
+@include media-breakpoint-up(lg) {
+  nav.hc-offcanvas-nav {
+    visibility: visible;
+  }
+  .hc-nav-trigger.hc-nav-1 {
+    display: none !important;
+  }
+  .hc-offcanvas-nav.hc-nav-1.nav-position-left .nav-container {
+    transform: translate3d(0, 0, 0) !important;
+  }
+  .hc-offcanvas-nav .nav-close {
+    display: none;
+  }
+}

@@ -1,0 +1,242 @@
+#customer_details {
+  padding: 5.2vw 7.3vw 10.4vw 7.3vw;
+  overflow: hidden;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  h3 {
+    color: $main_color;
+    font-size: 2.08vw;
+    margin-bottom: 25px;
+  }
+
+  p {
+    line-height: 1.3;
+  }
+
+  .concept {
+    text-align: center;
+    margin-bottom: 5.2vw;
+  }
+
+  .entete {
+    width: 100%;
+    height: 24.7vw;
+  }
+
+  .bloc-text {
+    box-shadow: 0 3px 30px #00000029;
+    position: relative;
+    top: -4.08vw;
+    padding: 50px;
+    margin: 0 7.3vw;
+    background-color: $txt_color_light;
+
+    .contexte {
+      padding-right: 25px;
+    }
+
+    .mission {
+      padding-left: 25px;
+    }
+  }
+
+  #actions {
+    h2 {
+      margin-bottom: 9.3vw;
+    }
+
+    .big-title {
+      font-size: 7.8vw;
+      color: #EDEDED;
+      text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: bold;
+    }
+
+    .number {
+      color: $main_color;
+      font-size: 15.3vw;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: bold;
+    }
+
+    /**********************************************   Bloc conseiller   **********************************************/
+
+    #conseiller {
+      margin-right: -7.3vw;
+      padding-bottom: 3vw;
+
+      /************************  Bloc conseiller - Colonne de gauche   ************************/
+
+      .conseiller-left {
+        width: 43%;
+        position: relative;
+
+        .big-title {
+          margin-left: -3.5vw;
+          margin-top: -9vw;
+          z-index: 1;
+        }
+
+        .number {
+          margin-top: -9vw;
+          margin-left: -9.5vw;
+          z-index: 2;
+          position: relative;
+        }
+      }
+
+      /************************  Bloc conseiller - Colonne de droite  ************************/
+
+      .conseiller-right {
+        width: 57%;
+        padding: 5.2vw 14.3vw 15.6vw 7.3vw;
+        background-color: #EDEDED;
+        position: relative;
+      }
+
+      .conseiller-img {
+        position: absolute;
+        width: 35.15vw;
+        height: 23.44vw;
+        overflow: hidden;
+        bottom: -15vw;
+        left: -27vw;
+      }
+    }
+
+
+    /**********************************************   Bloc imaginer + développer   **********************************************/
+
+    /************************  Bloc imaginer + développer - Colonne de gauche  ************************/
+
+    .actif-developper-text{
+      padding-top: 4.5vw !important;
+    }
+    .actif-developper-img{
+      padding-top: 14vw !important;
+    }
+    .left {
+      padding-top: 12.5vw;
+      margin-top: 70px;
+
+      .developper {
+
+        .big-title {
+          margin-top: -5vw;
+        }
+      }
+    }
+
+    /************************  Bloc imaginer + développer - Colonne de droite  ************************/
+
+    .right {
+
+      /***************   Imaginer   ***************/
+
+      .imaginer {
+        margin-top: -4vw;
+        .big-title {
+          margin-right: 20px;
+          display: inline;
+        }
+        .number {
+          display: inline;
+        }
+      }
+    }
+
+    .right .imaginer-txt{
+      display: none;
+    }
+
+    /***************   Grille d'images  ***************/
+
+    .grille {
+      .img-right {
+        padding-top: 13.3vw;
+        .hd{
+          order: 1;
+        }
+        .bd{
+          order: 2;
+        }
+      }
+      .img-left{
+        .hg{
+          order: 1;
+        }
+        .bg{
+          order: 2;
+        }
+      }
+
+      .left{
+        .img-right , .img-left{
+          display:none;
+        }
+      }
+
+      .conteneur-img {
+        width: 20.83vw;
+        height: 30.2vw;
+        overflow: hidden;
+      }
+    }
+
+    /************************  Bloc accompagner  ************************/
+
+    #bloc-accompagner {
+
+      background: url('../../../images/realisations/accompagner.jpg');
+      background-size: cover;
+      margin: -6vw -4.59vw 0 -4.59vw;
+      padding: 20.8vw 5.2vw 7.55vw 0;
+      color: #fff;
+
+      .big-title {
+        color: #000000;
+        opacity: 0.5;
+        text-align: right;
+      }
+
+      .content-block {
+        display: flex;
+
+        .number {
+          margin-top: -5vw;
+          margin-right: 40px;
+        }
+
+        .accompagner {
+          display: inline;
+        }
+      }
+    }
+  }
+
+  #expertises_title{
+    margin-top: 5.2vw;
+  }
+  #expertises {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+
+    p {
+      border: 1px solid #707070;
+      border-radius: 17px;
+      margin-right: 20px;
+      padding: 5px 20px;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+
+###> symfony/framework-bundle ###
+/www/.env.local
+/www/.env.local.php
+/www/.env.*.local
+/www/www/public/bundles/
+/www/var/
+/www/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+/www/.phpunit
+/www/.phpunit.result.cache
+/www/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/web-server-bundle ###
+/www/.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> symfony/webpack-encore-bundle ###
+/www/node_modules/
+/www/public/build/
+/www/npm-debug.log
+/www/yarn-error.log
+###< symfony/webpack-encore-bundle ###
+
+/www/.idea/
+/.idea/
+/.docker/data
+/.docker/data/db
+
+/public/upload/
+/node_modules/.yarn-integrity
+/yarn.lock
+*.yml
+/docker-compose.yml
+/www/public/.htpasswd
+/www/public/.htaccess

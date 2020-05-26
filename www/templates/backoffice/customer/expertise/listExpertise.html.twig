@@ -1,0 +1,54 @@
+{% extends 'backoffice/base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1>Liste des expertises</h1>
+
+        <div class="card collapsable-card">
+            <div class="card-header">
+                <a href="" title="Action">Action</a>
+            </div>
+            <div class="card-body">
+                <a href="{{ path('backoffice/expertise/edit') }}" title="Nouveau" class="btn btn-info btn-add">Nouveau</a>
+            </div>
+        </div>
+
+        <div class="table-wrapper-responsive">
+            <table class="table table-striped dataTable" data-order="[[ 0, &quot;DESC&quot; ]]">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Statut</th>
+                    <th>Créé le</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="tbody-contentblocks">
+                {% for expertise in expertises %}
+                    <tr>
+                        <td>{{ expertise.id }}</td>
+                        <td>{{ expertise.name }}</td>
+                        <td>{% if expertise.active %}
+                                {% set checked="checked" %}
+                            {% else %}
+                                {% set checked="" %}
+                            {% endif %}
+                            <input type="checkbox" autocomplete="off" data-toggle="toggle" {{ checked }} data-size="sm"
+                                   data-on="Oui" data-off="Non" data-onstyle="success" data-offstyle="secondary"
+                                   data-id="{{ expertise.id }}" data-field="active" data-entity="Customer\Expertise"/>
+                        </td>
+                        <td data-order="{{ expertise.createdAt|date('YmdHis') }}">{{ expertise.createdAt|date('d/m/Y H:i:s') }}</td>
+                        <td>
+                            <a class="flex_25" href="{{ path('backoffice/expertise/edit', {'id': expertise.id}) }}" title="Editer"><i class="fas fa-edit"></i></a>
+                            <a class="flex_25" href="{{ path('backoffice/expertise/delete', {'id': expertise.id}) }}" title="Supprimer"><i class="far fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+{% endblock %}

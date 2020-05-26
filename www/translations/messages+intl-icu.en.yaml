@@ -1,0 +1,4 @@
+#############################################
+# CONSTRAINTS
+
+constraints.password.tooShort: 'Password too short, {nb} min'

@@ -1,0 +1,16 @@
+.nav-tabs{
+  margin: 0 0 15px 0;
+  border-bottom: none;
+
+  li{
+    a.nav-link{
+      background: #DEDEDE;
+      border-color: #2a2a2a;
+    }
+    a.nav-link.active{
+      background: #FFFFFF;
+      border-color: #2a2a2a;
+      border-bottom: none;
+    }
+  }
+}

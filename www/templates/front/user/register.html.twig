@@ -1,0 +1,93 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        {{ form_start(form) }}
+            {{ dump(form) }}
+            <div class="form-group">
+                <span class="compulsory">{{ form_label(form.gender) }}</span>
+                <div class="radio-inline-block">
+                    {{ form_widget(form.gender) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <span class="compulsory">{{ form_label(form.lastname) }}</span>
+                {{ form_widget(form.lastname) }}
+            </div>
+
+            <div class="form-group">
+                <span class="compulsory">{{ form_label(form.firstname) }}</span>
+                {{ form_widget(form.firstname) }}
+            </div>
+
+            <div class="form-group">
+                <span class="compulsory">{{ form_label(form.email) }}</span>
+                {{ form_widget(form.email) }}
+                <div class="has-error">
+                    {{ form_errors(form.email) }}
+                </div>
+            </div>
+
+            {% for item in form.rawPassword %}
+                <div class="form-group password-seeable">
+                    <span class="compulsory">{{ form_label(item) }}</span>
+                    {{ form_widget(item) }}
+                    <i class="far fa-eye-slash"></i>
+                </div>
+                <div class="has-error"><div class="form-error-message">{{ form_errors(item) }}</div></div>
+            {% endfor %}
+
+            <div class="datepicker birthdaypicker">
+                {{ form_label(form.birthdate) }}
+                {{ form_widget(form.birthdate) }}
+                <div class="datepicker-widget-wrapper">
+                    <div class="birthdaypicker-widget"></div>
+                    <i class="far fa-calendar-alt"></i>
+                </div>
+            </div>
+            {% if form_errors(form.birthdate) %}
+                <div class="has-error">
+                    {{ form_errors(form.birthdate) }}
+                </div>
+            {% endif %}
+
+            {{ form_row(form.phone) }}
+
+            {{ form_row(form.optin) }}
+
+            <div class="form-group">
+                <div class="checkbox-inline">
+                    {{ form_widget(form.rules) }}
+                    <label for="stackedCheck1" class="form-check-label">{% trans %}form.register.personalDatas.1{% endtrans %} <a href="" target="_blank">{% trans %}form.register.personalDatas.2{% endtrans %}</a></label>
+                </div>
+                {% if form_errors(form.rules) %}
+                    <div class="has-error">
+                        {{ form_errors(form.rules) }}
+                    </div>
+                {% endif %}
+                <div class="form-error-message">Veuillez accepter le règlement</div>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-save">Créer mon compte</button>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).on({
+                click: function() {
+                    $('input[name="register[rules]"]').parents('.form-group').removeClass('has-error');
+                    if (!$('input[name="register[rules]"]').prop('checked')) {
+                        $('input[name="register[rules]"]').parents('.form-group').addClass('has-error');
+                        return false;
+                    }
+                }
+            }, 'button[type="submit"]');
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,301 @@
+/************************************************  Partie  concernant les customers sur la home  ************************************************/
+
+/********** Taille de 1200 à 992 **********/
+
+@media only screen and (max-width: 1200px) {
+
+  #home_customers {
+    padding: 10.4vw 3.125vw;
+    margin: 0;
+
+    .relative-row {
+      margin-bottom: 1.5vw;
+    }
+
+    .content {
+      top: 5vw;
+    }
+
+    .description {
+      width: auto;
+      padding: 25px;
+      z-index: 3;
+      position: initial;
+    }
+
+    .bloc-left {
+      .description {
+        align-self: flex-end;
+        margin-right: 42px;
+      }
+    }
+
+    .bloc-right {
+      .description {
+        align-self: flex-start;
+        margin-left: 42px;
+      }
+    }
+  }
+}
+
+/********** Taille en dessous de 768 **********/
+
+@media only screen and (max-width: 768px) {
+  #home_customers {
+    padding: 13.3vw 3.9vw;
+
+    h2 {
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 0;
+    }
+
+    .description {
+      width: 100%;
+      position: initial;
+      margin-left: 0 !important;
+      padding-bottom: 50px !important;
+    }
+
+    .separator {
+      display: block;
+    }
+  }
+}
+
+/********** Taille en dessous de 576 **********/
+
+@media only screen and (max-width: 576px) {
+  #home_customers {
+    padding: 13.3vw 4.16vw;
+  }
+}
+
+/************************************************  Partie concernant les customers sur la page réalisation  ************************************************/
+
+@media only screen and (max-width: 1550px) {
+  #realisation {
+    .links {
+      display: block;
+
+      .links-container {
+        margin-right: 0;
+      }
+
+      .links-container:first-child {
+        margin-bottom: 45px;
+      }
+    }
+  }
+}
+
+/********** Taille en dessous de 1200 **********/
+
+@media only screen and (max-width: 1200px) {
+  #realisation {
+    padding: 0 3.125vw 20vw 3.125vw;
+  }
+}
+
+/********** Taille en dessous de 768 **********/
+
+@media only screen and (max-width: 768px) {
+
+  #realisation {
+    padding: 0 3.9vw 12.5vw 3.9vw;
+
+    h3 {
+      text-align: center;
+    }
+
+    .project-name {
+      margin-bottom: 20px;
+    }
+
+    .no-pm {
+      margin-bottom: 13.89vw !important;
+    }
+
+    .bloc-left {
+      .separator-content > div:first-of-type {
+        margin-right: 0;
+      }
+    }
+
+    .bloc-right {
+      .separator-content > div:first-of-type {
+        margin-left: 0;
+      }
+    }
+
+    #expertise-filtre {
+      z-index: 100;
+      position: fixed;
+      bottom: 19.45vw;
+      border-top: 1px solid $main_color;
+      background-color: #fff;
+      display: none;
+      margin-left: -4.16vw;
+
+      #close-expertises {
+        text-align: right;
+        display: block;
+        padding: 15px;
+
+        #close-cross {
+          width: 6.94vw;
+          height: 6.94vw;
+        }
+
+        #expertises {
+          display: flex;
+          justify-content: center;
+          padding-top: 15px;
+          padding-bottom: 10.4vw;
+        }
+      }
+
+      p {
+        border: 1px solid #707070;
+        border-radius: 17px;
+        margin-right: 5px;
+        margin-left: 5px;
+        padding: 5px 20px;
+        cursor: pointer;
+      }
+
+
+      .active {
+        background-color: $main_color;
+        color: white;
+        border-color: $main_color;
+      }
+    }
+
+    .expertises {
+      justify-content: center !important;
+    }
+
+    .links {
+      display: initial;
+    }
+
+    .img-bloc {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .links-container {
+      margin-bottom: 20px;
+    }
+
+
+    #filtrer {
+      position: fixed;
+      bottom: 0;
+      height: 19.45vw;
+      background-color: #fff;
+      display: flex;
+      z-index: 5;
+      margin-left: -4.16vw;
+      margin-right: 4.16vw;
+      width: 100%;
+      border-top: 1px solid $main_color;
+
+      .btn-filtre {
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 29px;
+        height: 13.33vw;
+        width: 88.89vw;
+        margin: auto;
+        padding: 4.17vw 8.89vw;
+        text-align: center;
+        text-decoration: none;
+      }
+    }
+
+    .separator-content > div:first-of-type {
+      width: auto !important;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 576px) {
+  #realisation {
+    padding: 0 4.16vw 12.5vw 4.16vw;
+    .expertises {
+      p {
+        width: 215px !important;
+      }
+    }
+  }
+}
+
+
+/************************************************  Partie commune à plusieurs pages concernant les customers  ************************************************/
+
+/********** Taille en dessous de 1200px **********/
+
+@media only screen and (max-width: 1200px) {
+  #home_customers, #realisation {
+    .img-bloc {
+      width: 100% !important;
+    }
+
+    hr {
+      height: 14vw
+    }
+  }
+}
+
+/********** Taille en dessous de 768px **********/
+
+@media only screen and (max-width: 768px) {
+  #home_customers, #realisation {
+    .project-name {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .relative-row {
+      margin-bottom: -1.5vw;
+      position: initial;
+      height: initial;
+    }
+
+    .bloc-left, .bloc-right {
+      display: block;
+    }
+
+    .content {
+      width: 100%;
+      height: 100%;
+      position: initial;
+      display: block;
+
+      .separator-content {
+        display: block;
+
+        hr {
+          display: none;
+        }
+
+        .img-bloc {
+          width: 100%;
+          height: auto;
+          overflow: hidden;
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
