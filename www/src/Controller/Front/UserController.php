@@ -8,11 +8,9 @@
 
 namespace App\Controller\Front;
 
-use App\Controller\Front\FrontController;
 use App\Entity\User\User;
 use App\Form\User\LoginType;
 use App\Form\User\RegisterType;
-use App\Utils\Various\Constant;
 use App\Utils\Various\ReturnMsgsUtils;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
