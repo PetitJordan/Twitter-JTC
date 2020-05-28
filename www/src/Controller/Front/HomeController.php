@@ -8,24 +8,24 @@
 
 namespace App\Controller\Front;
 
-use App\Controller\Front\FrontController;
-use App\Entity\Contact\Contact;
-use App\Form\Front\ContactEditType;
-use App\Form\Front\Home\ContactChatType;
-use App\Utils\Mail\Mailer;
-use App\Utils\Various\ReturnMsgsUtils;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
+use App\Service\TwitterService;
+
+/*
+ * @param TwitterService $twitterService
+ */
 
 class HomeController extends FrontController
 {
-    public function home()
+    public function home(TwitterService $twitterService)
     {
         $pageName = 'home';
-
+        $mesTweets = $twitterService->getTweets();
 
         // rendu template
         return $this->render('front/home/home.html.twig', array(
             'pageName'  => $pageName,
+            'tweets' => $mesTweets
         ));
     }
 }

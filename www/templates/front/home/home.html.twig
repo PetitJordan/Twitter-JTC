@@ -2,6 +2,19 @@
 
 {% block body %}
     <div id="home">
-
+        <h2> Mes derniers tweets</h2>
+        <ul>
+        {% for tweet in tweets %}
+            <li>{{ tweet.text }}
+                <small>
+                    <time class="timeago" datetime={{ tweet.created_at }}></time>
+                </small>
+            </li>
+        {% endfor %}
+        </ul>
     </div>
+
+    {% block javascripts %}
+        <script src="https://timeago.yarp.com/jquery.timeago.js"></script>
+    {% endblock %}
 {% endblock %}
