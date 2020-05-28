@@ -125,8 +125,8 @@ class InitCommand extends Command
         $user->setGender(Constant::GENDER_MR);
         $user->setFirstname('Contact');
         $user->setLastname('Atafoto');
-        $user->setEmail('contact@atafotostudio.com');
-        $user->setPassword($this->passwordEncoder->encodePassword($user, 'contact'));
+        $user->setEmail('admin@admin.com');
+        $user->setPassword($this->passwordEncoder->encodePassword($user, 'root'));
         $user->setIdStatus(Constant::STATUS_VALIDATE);
         $user->setBirthdate(new \DateTime('1981-10-06'));
         $user->addRole(Constant::ROLE_SUPER_ADMIN);

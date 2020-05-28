@@ -55,7 +55,7 @@ class LoginType extends AbstractType
             // Case à cocher se souvenir de mpoi
             ->add('_remember_me', CheckboxType::class, array(
                 'required'      => false,
-                'label'         => 'form.login._remember_me.placeholder',
+                'label'         => 'Se souvenir de moi',
                 'attr'          => array(
                     'data-toggle'       => 'toggle',
                     'data-size'         => 'sm',

@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 class Mailer
 {
-    const MAILJET_API_KEY_TRANSACTIONAL = Constant::MAILJET_API_KEY_TRANSACTIONAL;
+/*    const MAILJET_API_KEY_TRANSACTIONAL = Constant::MAILJET_API_KEY_TRANSACTIONAL;
     const MAILJET_API_SECRET_TRANSACTIONAL = Constant::MAILJET_API_SECRET_TRANSACTIONAL;
     const NO_REPLY_EMAIL = Constant::NO_REPLY_EMAIL;
     const CONTACT_EMAIL = Constant::CONTACT_EMAIL;
@@ -132,53 +132,53 @@ class Mailer
         }
 
         return $this->mailer->send($message);
-    }
+    }*/
 
     /**
      * @return string
      */
-    public function getFrom(): string
+    /*public function getFrom(): string
     {
         return $this->from;
-    }
+    }*/
 
     /**
      * @param string $from
      */
-    public function setFrom(string $from): void
+   /* public function setFrom(string $from): void
     {
         $this->from = $from;
-    }
+    }*/
 
     /**
      * @return string
      */
-    public function getFromName(): string
+    /*public function getFromName(): string
     {
         return $this->fromName;
-    }
+    }*/
 
     /**
      * @param string $fromName
      */
-    public function setFromName(string $fromName): void
+   /* public function setFromName(string $fromName): void
     {
         $this->fromName = $fromName;
-    }
+    }*/
 
     /**
      * @return mixed
      */
-    public function getSiteType()
+    /*public function getSiteType()
     {
         return $this->siteType;
-    }
+    }*/
 
     /**
      * @param mixed $siteType
      */
-    public function setSiteType($siteType): void
+   /* public function setSiteType($siteType): void
     {
         $this->siteType = $siteType;
-    }
+    }*/
 }

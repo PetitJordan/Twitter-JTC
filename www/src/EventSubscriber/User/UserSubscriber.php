@@ -61,7 +61,7 @@ class UserSubscriber
         $user = $args->getObject();
 
         // Regarde si on a un optin avec le même email
-        if ($user->getEmail()) {
+       /* if ($user->getEmail()) {
             $optinCheck = $this->entityManager->getRepository(Optin::class)->findOneBy(
                 array(
                     'email'             => $user->getEmail()
@@ -78,7 +78,7 @@ class UserSubscriber
                 $optinCheck->setUser($user);
                 $this->entityManager->persist($optinCheck);
             }
-        }
+        }*/
 
         // si pas de status, on met valide par défaut
         if ($user->getIdStatus() === null) {
@@ -101,12 +101,12 @@ class UserSubscriber
         // Ajoute le group par défaut au user
 
         // action onPostPersist
-        $this->tools->mailer->send(
+       /* $this->tools->mailer->send(
             Mailer::USER_REGISTER,
             $user->getEmail(),
             array(
                 'user'      => $user
             )
-        );
+        );*/
     }
 }
