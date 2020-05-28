@@ -101,12 +101,12 @@ class UserSubscriber
         // Ajoute le group par défaut au user
 
         // action onPostPersist
-        $this->tools->mailer->send(
+       /* $this->tools->mailer->send(
             Mailer::USER_REGISTER,
             $user->getEmail(),
             array(
                 'user'      => $user
             )
-        );
+        );*/
     }
 }

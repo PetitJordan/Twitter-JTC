@@ -14,6 +14,7 @@ use App\Form\Front\ContactEditType;
 use App\Form\Front\Home\ContactChatType;
 use App\Utils\Mail\Mailer;
 use App\Utils\Various\ReturnMsgsUtils;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class HomeController extends FrontController
 {

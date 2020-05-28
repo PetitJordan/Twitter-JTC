@@ -33,29 +33,29 @@ class RegisterType extends AbstractType
                 'required'      => true,
                 'label'         => 'form.register.gender',
                 'choices'       => array(
-                    'form.register.gender.choices.1'          => 1,
-                    'form.register.gender.choices.2'          => 2
+                    'Homme'          => 1,
+                    'Femme'          => 2
                 ),
                 'expanded'      => true
             ))
             ->add('lastname', TextType::class, array(
                 'required'      => true,
-                'label'         => 'form.register.lastname',
+                'label'         => 'Nom',
             ))
             ->add('firstname', TextType::class, array(
                 'required'      => true,
-                'label'         => 'form.register.firstname',
+                'label'         => 'Prénom',
             ))
             ->add('email', EmailType::class, array(
                 'required'      => true,
-                'label'         => 'form.register.email'
+                'label'         => 'Email'
             ))
             ->add('rawPassword', RepeatedType::class, array(
                 'required'      => true,
                 'type'          => PasswordType::class,
-                'invalid_message' => 'form.errors.password.mustMatch',
-                'first_options'  => ['label' => 'form.register.rawPassword'],
-                'second_options' => ['label' => 'form.register.confirmPassword'],
+                'invalid_message' => 'Merci de rentrer deux mots de passe identiques',
+                'first_options'  => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmation du mot de passe'],
 	            'label'          => false,
 	            'constraints'    => array(
 	            	new Password()
@@ -63,15 +63,12 @@ class RegisterType extends AbstractType
             ))
             ->add('birthdate', BirthdayType::class, array(
                 'required'      => false,
-                'label'         => 'form.register.birthdate',
+                'label'         => 'Date de naissance',
                 'widget'        => 'choice'
             ))
             ->add('phone', TextType::class, array(
                 'required'      => false,
-                'label'         => 'form.register.phone'
-            ))
-            ->add('optin', \App\Form\User\Optin\EditType::class, array(
-                'label'         => false
+                'label'         => 'Téléphone'
             ))
             ->add('rules', CheckboxType::class, array(
                 'required'      => true,
