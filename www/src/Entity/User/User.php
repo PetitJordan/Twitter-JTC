@@ -135,11 +135,6 @@ class User implements UserInterface
      * LIAISONS AVEC AUTRES ENTITES
      */
 
-    /**
-     * @var Optin
-     * @ORM\OneToOne(targetEntity="App\Entity\User\Optin", mappedBy="user", orphanRemoval=true, cascade={"persist"})
-     */
-    private $optin;
 
     /**
      * @var ArrayCollection|UserLog[]
@@ -237,13 +232,9 @@ class User implements UserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(string $email): void
     {
         $this->email = $email;
-        if ($this->getOptin()) {
-            $this->getOptin()->setEmail($email);
-        }
-        return $this;
     }
 
     /**
@@ -278,22 +269,6 @@ class User implements UserInterface
         $this->phone = $phone;
     }
 
-    /**
-     * @return Optin
-     */
-    public function getOptin(): ?Optin
-    {
-        return $this->optin;
-    }
-
-    /**
-     * @param Optin $optin
-     */
-    public function setOptin(Optin $optin): void
-    {
-        $this->optin = $optin;
-        $optin->setUser($this);
-    }
 
     /**
      * @return string

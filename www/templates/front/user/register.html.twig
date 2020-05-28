@@ -3,9 +3,7 @@
 {% block body %}
     <div class="container">
         {{ form_start(form) }}
-            {{ dump(form) }}
             <div class="form-group">
-                <span class="compulsory">{{ form_label(form.gender) }}</span>
                 <div class="radio-inline-block">
                     {{ form_widget(form.gender) }}
                 </div>
@@ -54,12 +52,10 @@
 
             {{ form_row(form.phone) }}
 
-            {{ form_row(form.optin) }}
-
             <div class="form-group">
                 <div class="checkbox-inline">
                     {{ form_widget(form.rules) }}
-                    <label for="stackedCheck1" class="form-check-label">{% trans %}form.register.personalDatas.1{% endtrans %} <a href="" target="_blank">{% trans %}form.register.personalDatas.2{% endtrans %}</a></label>
+                    <label for="stackedCheck1" class="form-check-label">J'accepte les conditions d'utilisations</label>
                 </div>
                 {% if form_errors(form.rules) %}
                     <div class="has-error">
