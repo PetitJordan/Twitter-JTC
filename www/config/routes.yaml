@@ -35,6 +35,28 @@ register:
   path: inscription
   controller: App\Controller\Front\UserController:register
 
+##########################################################
+################# KEYWORD
+
+keywords:
+  path: keywords
+  controller: App\Controller\Backoffice\KeywordController:listKeyword
+
+keyword/edit:
+  path: keyword/{id}/edit
+  controller: App\Controller\Backoffice\KeywordController:editKeyword
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+keyword/delete:
+  path: keyword/{id}/delete
+  controller: App\Controller\Backoffice\KeywordController:deleteKeyword
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
 
 ##########################################################
 ################# CUSTOMERS
