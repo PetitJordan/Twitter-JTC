@@ -19,8 +19,7 @@
 
 ## Technologies utilisées
 - Symfony 4 (Framework BackEnd)
-- Docker (Gestionnaire de dépendances)
-- Bootstrap (Framework FrontEnd)
+- Bootstrap (FrontEnd)
 - MySQL (Base de données)
 
 Voir le fichier package.json du Back et du Front pour voir les dépendances utilisées
