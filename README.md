@@ -19,8 +19,7 @@
 
 ## Technologies utilisées
 - Symfony 4 (Framework BackEnd)
-- ? (Gestionnaire de dépendances)
-- Bootstrap (Framework FrontEnd)
+- Bootstrap (FrontEnd)
 - MySQL (Base de données)
 
 Voir le fichier package.json du Back et du Front pour voir les dépendances utilisées
@@ -41,19 +40,21 @@ docker-compose up --build -d
 
 # Launch
 docker-compose up -d
+
+# Pour exécuter les outils dans le docker utilisé
+docker exec -it [docker_id] bash
+
+# Outils à installer 
+yarn install 
+composer install 
+
 ```
 
 ## URL
 Une fois les commandes Docker exécutées, le projet devrait fonctionner et le client
-accessible sur le navigateur à l'adresse du serveur node
+accessible sur le navigateur à l'adresse du serveur php
 ```
-# mongodb server 
-localhost:27017
-
-# node server
-localhost:3000
+# php server
+127.0.0.1:9000
 ```
 
-## Doc de l'api
-
-Dans ?
