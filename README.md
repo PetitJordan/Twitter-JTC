@@ -58,3 +58,9 @@ accessible sur le navigateur à l'adresse du serveur php
 127.0.0.1:9000
 ```
 
+## URL de nos fonctionnalités
+```
+# Keyword url
+127.0.0.1:9000/keywords
+```
+
