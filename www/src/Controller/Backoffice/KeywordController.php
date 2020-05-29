@@ -1,94 +1,91 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Backoffice;
 
-use App\Entity\Keyword;
-use App\Form\KeywordType;
-use App\Repository\KeywordRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Keyword\Keyword;
+use App\Form\Front\Keyword\KeywordEditType;
+use App\Repository\Keyword\KeywordRepository;
+use App\Utils\Various\ReturnMsgsUtils;
 
-/**
- * @Route("/keyword")
- */
-class KeywordController extends AbstractController
+
+class KeywordController extends BackofficeController
 {
-    /**
-     * @Route("/", name="keyword_index", methods={"GET"})
-     */
-    public function index(KeywordRepository $keywordRepository): Response
+    public function listKeyword(KeywordRepository $KeywordRepository)
     {
-        return $this->render('keyword/index.html.twig', [
-            'keywords' => $keywordRepository->findAll(),
-        ]);
+        $keywords = $KeywordRepository->findAll();
+
+        return $this->render('front/keyword/listKeyword.html.twig', array(
+            'keywords' => $keywords
+        ));
     }
 
-    /**
-     * @Route("/new", name="keyword_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
+    public function editKeyword($id, KeywordRepository $keywordRepository)
     {
-        $keyword = new Keyword();
-        $form = $this->createForm(KeywordType::class, $keyword);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($keyword);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('keyword_index');
+        $keyword = null;
+        // charge ou nouveau user
+        if ($id) {
+            $keyword = $keywordRepository->find($id);
+        }
+        if (!$keyword) {
+            $keyword = new Keyword();
         }
 
-        return $this->render('keyword/new.html.twig', [
-            'keyword' => $keyword,
+        // formulaire
+        $form = $this->createForm(KeywordEditType::class, $keyword);
+        $form->handleRequest($this->tools->requestStack->getCurrentRequest());
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+
+                // sauvegarde
+                $this->getDoctrine()->getManager()->persist($keyword);
+                $this->getDoctrine()->getManager()->flush();
+
+                // message
+                $this->addFlash(
+                    ReturnMsgsUtils::CLASS_SUCCESS,
+                    ReturnMsgsUtils::SAVE_SUCCESS
+                );
+
+                // redirection
+                return $this->redirectToRoute('keywords',
+                    array('id' => $keyword->getId()
+                    )
+                );
+            } else {
+                // message
+                $this->addFlash(
+                    ReturnMsgsUtils::CLASS_ERROR,
+                    ReturnMsgsUtils::SAVE_ERROR
+                );
+            }
+        }
+
+        // rendu template
+        return $this->render('front/keyword/editKeyword.html.twig', array(
             'form' => $form->createView(),
-        ]);
+            'keyword' => $keyword
+        ));
     }
 
-    /**
-     * @Route("/{id}", name="keyword_show", methods={"GET"})
-     */
-    public function show(Keyword $keyword): Response
+    public function deleteKeyword($id, KeywordRepository $keywordRepository)
     {
-        return $this->render('keyword/show.html.twig', [
-            'keyword' => $keyword,
-        ]);
-    }
+        $keyword = $keywordRepository->find($id);
 
-    /**
-     * @Route("/{id}/edit", name="keyword_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Keyword $keyword): Response
-    {
-        $form = $this->createForm(KeywordType::class, $keyword);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($keyword != null) {
+            $this->getDoctrine()->getManager()->remove($keyword);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('keyword_index');
+            // message
+            $this->addFlash(
+                ReturnMsgsUtils::CLASS_SUCCESS,
+                ReturnMsgsUtils::DELETE_SUCCESS
+            );
+        } else {
+            $this->addFlash(
+                ReturnMsgsUtils::CLASS_ERROR,
+                ReturnMsgsUtils::DELETE_ERROR
+            );
         }
-
-        return $this->render('keyword/edit.html.twig', [
-            'keyword' => $keyword,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="keyword_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Keyword $keyword): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$keyword->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($keyword);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('keyword_index');
+        return $this->redirectToRoute('keywords');
     }
 }

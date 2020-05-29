@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Keyword;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\KeywordRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\Keyword\KeywordRepository")
  */
 class Keyword
 {
@@ -25,6 +27,11 @@ class Keyword
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTime('now');
+    }
 
     public function getId(): ?int
     {

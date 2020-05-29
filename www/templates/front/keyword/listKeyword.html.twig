@@ -1,0 +1,42 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1>Liste des Keyword</h1>
+
+        <div class="card collapsable-card">
+            <div class="card-header">
+                <a href="" title="Action">Action</a>
+            </div>
+            <div class="card-body">
+                <a href="{{ path('keyword/edit') }}" title="Nouveau" class="btn btn-info btn-add">Nouveau</a>
+            </div>
+        </div>
+
+        <div class="table-wrapper-responsive">
+            <table class="table table-striped dataTable sortable" data-order="[[ 5, &quot;DESC&quot; ]]" data-entity="Keyword\Keyword">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Créé le</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="tbody-contentblocks">
+                {% for keyword in keywords %}
+                    <tr data-id="{{ keyword.id }}">
+                        <td>{{ keyword.id }}</td>
+                        <td>{{ keyword.name }}</td>
+                        <td data-order="{{ keyword.createdAt|date('YmdHis') }}">{{ keyword.createdAt|date('d/m/Y H:i:s') }}</td>
+                        <td>
+                            <a class="flex_25" href="{{ path('keyword/edit', {'id': keyword.id}) }}" title="Editer"><i class="fas fa-edit"></i></a>
+                            <a class="flex_25" href="{{ path('keyword/delete', {'id': keyword.id}) }}" title="Supprimer"><i class="far fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
