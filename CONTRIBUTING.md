@@ -1,6 +1,6 @@
 # :notebook_with_decorative_cover: Project Tweet analytics - A web analytics keyword dashboard 
 
-### Front-end: Tweet analytics Dashboard
+### Développeurs principaux
 - :heavy_check_mark: Dufour Clément 
 - :heavy_check_mark: Petit Jordan
 - :heavy_check_mark: Douma Tomi
