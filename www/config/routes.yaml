@@ -58,6 +58,24 @@ keyword/delete:
   requirements:
     id: '[0-9]+'
 
+keyword/requestKeyword:
+      path: keyword/{id}/request
+      controller: App\Controller\Backoffice\KeywordController:requestKeyword
+      defaults:
+        id: 0
+      requirements:
+        id: '[0-9]+'
+
+##########################################################
+################# KEYWORD
+trends:
+  path: trends
+  controller: App\Controller\Backoffice\TrendsController:getTrends
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
 ##########################################################
 ################# CUSTOMERS
 

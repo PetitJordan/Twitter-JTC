@@ -23,4 +23,33 @@ class TwitterService
         return $tweets;
 
     }
+
+    public function getKeywordsDataFirst($filters){
+
+        $twitter = $this->initializeOAuth();
+
+        $keywordsData = $twitter->get('search/tweets', ['q' => '%23truffaut', 'result_type' => 'recent', 'lang' => 'fr', 'count' => '50', 'until' => date('Y-m-d', time())]);
+
+        return $keywordsData;
+
+    }
+
+    public function getKeywordsData($filters){
+
+        $twitter = $this->initializeOAuth();
+        $keywordsData = $twitter->get('search/tweets', ['q' => '%23truffaut', 'result_type' => 'recent', 'lang' => 'fr', 'count' => '50', 'since_id' => $max_id]);
+
+        return $keywordsData;
+
+    }
+    // Returns the top 50 trending topics for a specific WOEID
+    public function getTrendsPlace(){
+
+        $twitter = $this->initializeOAuth();
+        // id 615702 = Paris
+        $trendings = $twitter->get('trends/place', ['id' => '615702']);
+
+        return $trendings;
+
+    }
 }
