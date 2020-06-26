@@ -67,10 +67,18 @@ keyword/requestKeyword:
         id: '[0-9]+'
 
 ##########################################################
-################# KEYWORD
+################# TRENDS
 trends:
   path: trends
   controller: App\Controller\Backoffice\TrendsController:getTrends
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+trends/visualize:
+  path: trends/{name}/visualize
+  controller: App\Controller\Backoffice\TrendsController:visualizeTrend
   defaults:
     id: 0
   requirements:

@@ -10,7 +10,7 @@
             </tr>
             {% for name,volume in trendings %}
                 <tr>
-                    <td>{{ name }}</td>
+                    <td><a href="{{ path('trends/visualize', {'name': name}) }}" title="Voir l'évolution">{{ name }}</a></td>
                     <td>
                         <small>
                             {{ volume }}

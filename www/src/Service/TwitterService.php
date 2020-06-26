@@ -9,6 +9,7 @@ class TwitterService
     public function initializeOAuth() {
 
         $oauth = new TwitterOAuth("jAxFel5JdZl2o0O7p2fxw6zwS", "GoKRO6mVtmn4HAnLW9syEJ5dnmG45gqKZqFGbZUfH4dhWX3YhU");
+        $oauth->setTimeouts(15, 20);
         $accessToken = $oauth->oauth2('oauth2/token' , ['grant_type' => 'client_credentials']);
 
         $twitter = new TwitterOAuth("jAxFel5JdZl2o0O7p2fxw6zwS", "GoKRO6mVtmn4HAnLW9syEJ5dnmG45gqKZqFGbZUfH4dhWX3YhU", null, $accessToken->access_token);
@@ -24,24 +25,25 @@ class TwitterService
 
     }
 
-    public function getKeywordsDataFirst($filters){
+//    public function getKeywordsDataFirst($filters){
+//
+//        $twitter = $this->initializeOAuth();
+//
+//        $keywordsData = $twitter->get('search/tweets', ['q' => '%23truffaut', 'result_type' => 'recent', 'lang' => 'fr', 'count' => '50', 'until' => date('Y-m-d', time())]);
+//
+//        return $keywordsData;
+//
+//    }
+//
+//    public function getKeywordsData($filters){
+//
+//        $twitter = $this->initializeOAuth();
+//        $keywordsData = $twitter->get('search/tweets', ['q' => '%23truffaut', 'result_type' => 'recent', 'lang' => 'fr', 'count' => '50', 'since_id' => $max_id]);
+//
+//        return $keywordsData;
+//
+//    }
 
-        $twitter = $this->initializeOAuth();
-
-        $keywordsData = $twitter->get('search/tweets', ['q' => '%23truffaut', 'result_type' => 'recent', 'lang' => 'fr', 'count' => '50', 'until' => date('Y-m-d', time())]);
-
-        return $keywordsData;
-
-    }
-
-    public function getKeywordsData($filters){
-
-        $twitter = $this->initializeOAuth();
-        $keywordsData = $twitter->get('search/tweets', ['q' => '%23truffaut', 'result_type' => 'recent', 'lang' => 'fr', 'count' => '50', 'since_id' => $max_id]);
-
-        return $keywordsData;
-
-    }
     // Returns the top 50 trending topics for a specific WOEID
     public function getTrendsPlace(){
 
