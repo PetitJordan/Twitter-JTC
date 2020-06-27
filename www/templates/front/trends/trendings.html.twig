@@ -1,0 +1,24 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+    <div id="home">
+        <h2>Les Tweets populaires du moment (Paris)</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>Hashtag</th>
+                <th>Nombre de tweets</th>
+            </tr>
+            {% for name,volume in trendings %}
+                <tr>
+                    <td><a href="{{ path('trends/visualize', {'name': name}) }}" title="Voir l'évolution">{{ name }}</a></td>
+                    <td>
+                        <small>
+                            {{ volume }}
+                        </small>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

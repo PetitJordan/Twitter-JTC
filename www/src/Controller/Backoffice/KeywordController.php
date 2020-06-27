@@ -3,8 +3,11 @@
 namespace App\Controller\Backoffice;
 
 use App\Entity\Keyword\Keyword;
+use App\Entity\Keyword\Request;
 use App\Form\Front\Keyword\KeywordEditType;
 use App\Repository\Keyword\KeywordRepository;
+use App\Repository\Keyword\RequestRepository;
+use App\Service\TwitterService;
 use App\Utils\Various\ReturnMsgsUtils;
 
 
@@ -22,7 +25,7 @@ class KeywordController extends BackofficeController
     public function editKeyword($id, KeywordRepository $keywordRepository)
     {
         $keyword = null;
-        // charge ou nouveau user
+        // charge ou nouveau keyword
         if ($id) {
             $keyword = $keywordRepository->find($id);
         }

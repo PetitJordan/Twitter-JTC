@@ -2,7 +2,9 @@
 
 namespace App\Entity\Keyword;
 
+use App\Entity\Keyword\Request;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 
@@ -28,9 +30,15 @@ class Keyword
      */
     private $createdAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Keyword\Request", mappedBy="keywords")
+     */
+    private $requests;
+
     public function __construct()
     {
         $this->createdAt = new DateTime('now');
+        $this->requests = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,6 +66,37 @@ class Keyword
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Request[]
+     */
+    public function getRequests(): Collection
+    {
+        return $this->requests;
+    }
+
+    public function addRequest(Request $request): self
+    {
+        if (!$this->requests->contains($request)) {
+            $this->requests[] = $request;
+            $request->setKeywords($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRequest(Request $request): self
+    {
+        if ($this->requests->contains($request)) {
+            $this->requests->removeElement($request);
+            // set the owning side to null (unless already changed)
+            if ($request->getKeywords() === $this) {
+                $request->setKeywords(null);
+            }
+        }
 
         return $this;
     }
