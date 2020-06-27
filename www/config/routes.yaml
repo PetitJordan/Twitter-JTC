@@ -59,6 +59,17 @@ keyword/delete:
     id: '[0-9]+'
 
 ##########################################################
+################# TWITTER
+
+front/twitter:
+  path: /twitter
+  controller: App\Controller\Front\TwitterController:showTweets
+  defaults:
+    id: 0
+    requirements:
+      id: '[0-9]+'
+
+##########################################################
 ################# CUSTOMERS
 
 ###################

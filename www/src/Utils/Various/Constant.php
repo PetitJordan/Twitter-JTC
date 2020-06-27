@@ -10,16 +10,6 @@ namespace App\Utils\Various;
 
 class Constant
 {
-    /*******************************************************
-     * EMAIL
-     */
-    const MAILJET_API_KEY_TRANSACTIONAL = '2eaeb2796e5595bd8e83225a03c92763';
-    const MAILJET_API_SECRET_TRANSACTIONAL = 'cc5c63e1fd19c38eb4d17c754e385d05';
-    const NO_REPLY_EMAIL = 'noreply@digitalstart.fr';
-    const CONTACT_EMAIL = 'n.lauwick@atafotostudio.com';
-//    const CONTACT_EMAIL = 'contact@digitalstart.fr';
-    const NO_REPLY_NAME = 'Digital Start';
-
 
     /*******************************************************
      * FILE TYPE
@@ -64,14 +54,10 @@ class Constant
     /*******************************************************
      * GOOGLE
      */
-    const GOOGLE_MAPS_KEY = 'AIzaSyDOhg6yOIbeGLfdbM0cxRhcAW-Y3gD7vBQ';
-    const GOOGLE_MAPS_KEY_PHP = 'AIzaSyAmaZ1NIzD0wEyHe9YWPjcpZFxX0qVkMo0';
+    const GOOGLE_MAPS_KEY = 'kleybidon';
+    const GOOGLE_MAPS_KEY_PHP = 'kleybidon';
 
-    /*******************************************************
-     * INSTAGRAM
-     */
 
-    const INSTAGRAM_ACCESS_TOKEN = '9000309386.1677ed0.443d096dd0e5478087e693a772fcc657';
 
     /*******************************************************
      * FOLDER

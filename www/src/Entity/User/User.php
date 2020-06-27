@@ -143,6 +143,16 @@ class User implements UserInterface
      */
     private $userLogs;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $twitter_name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $twitter_password;
+
     /****************************************************************************
      * CONSTRUCT
      */
@@ -476,6 +486,30 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getTwitterName(): ?string
+    {
+        return $this->twitter_name;
+    }
+
+    public function setTwitterName(string $twitter_name): self
+    {
+        $this->twitter_name = $twitter_name;
+
+        return $this;
+    }
+
+    public function getTwitterPassword(): ?string
+    {
+        return $this->twitter_password;
+    }
+
+    public function setTwitterPassword(string $twitter_password): self
+    {
+        $this->twitter_password = $twitter_password;
+
+        return $this;
     }
 
 }
