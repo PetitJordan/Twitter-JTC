@@ -9,8 +9,12 @@
 namespace App\Controller\Front;
 
 use App\Entity\User\User;
-use App\Form\User\LoginType;
-use App\Form\User\RegisterType;
+use App\Form\Front\User\EditType;
+use App\Form\Front\User\ChangePasswordType;
+use App\Form\Front\User\LoginType;
+use App\Form\Front\User\RegisterType;
+use App\Repository\User\UserRepository;
+use App\Utils\Various\Constant;
 use App\Utils\Various\ReturnMsgsUtils;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -20,6 +24,19 @@ use Symfony\Component\Security\Http\SecurityEvents;
 
 class UserController extends FrontController
 {
+
+    public function myAccount(UserRepository $userRepository)
+    {
+        // recupere les users
+        $users = $userRepository->findAll();
+
+        // rendu template
+        return $this->render('front/user/myaccount.html.twig', array(
+            'users'         => $users
+        ));
+    }
+
+
     /**
      * Page de login
      * @param AuthenticationUtils $authenticationUtils
@@ -47,8 +64,8 @@ class UserController extends FrontController
 
         // Rendu template
         return $this->render('front/user/login.html.twig', array(
-            'error'         => $error,
-            'form'          => $formLogin->createView(),
+            'error' => $error,
+            'form' => $formLogin->createView(),
             'breadcrumb' => $breadcrumb,
         ));
     }
@@ -98,7 +115,115 @@ class UserController extends FrontController
 
         // rendu template
         return $this->render('front/user/register.html.twig', array(
-           'form'               => $form->createView()
+            'form' => $form->createView()
         ));
+    }
+
+    public function editUser($id, UserPasswordEncoderInterface $passwordEncoder, UserRepository $userRepository)
+    {
+        $user = null;
+        // charge ou nouveau user
+        if ($id) {
+            $user = $userRepository->find($id);
+           if ($user) {
+                // check que l'admin peu editer ce user
+                if (!$this->isHighEnoughToEdit($user)) {
+                    $this->addFlash(
+                        ReturnMsgsUtils::CLASS_ERROR,
+                        ReturnMsgsUtils::AUTHORIZATION_ERROR
+                    );
+                    return $this->redirectToRoute('front/user/edit');
+                }
+            }
+        }
+        if (!$user) {
+            $user = new User();
+        }
+
+        // formulaire
+        $form = $this->createForm(EditType::class, $user);
+        $form->handleRequest($this->tools->requestStack->getCurrentRequest());
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                // si nouveau utilisateur
+                if (!$user->getId() && $form->get('rawPassword')->getData()) {
+                    // infos complementaires
+                    $user->setIdStatus(Constant::STATUS_VALIDATE);
+                    $user->setPassword($passwordEncoder->encodePassword($user, $user->getRawPassword()));
+                }
+
+                // sauvegarde
+                $this->getDoctrine()->getManager()->persist($user);
+                $this->getDoctrine()->getManager()->flush();
+
+                // message
+                $this->addFlash(
+                    ReturnMsgsUtils::CLASS_SUCCESS,
+                    ReturnMsgsUtils::SAVE_SUCCESS
+                );
+
+               return $this->redirectToRoute('front/user/edit', array('id' => $user->getId()));
+            } else {
+                // message
+                $this->addFlash(
+                    ReturnMsgsUtils::CLASS_ERROR,
+                    ReturnMsgsUtils::SAVE_ERROR
+                );
+            }
+        }
+        // rendu template
+        return $this->render('front/user/editUser.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
+    public function changePassword($id, UserPasswordEncoderInterface $passwordEncoder, UserRepository $userRepository)
+    {
+        // charge user
+        $user = $userRepository->find($id);
+        /*    if (!$user) {
+                return $this->redirectToRoute('backoffice/users');
+            }*/
+        /* // check que l'admin peu editer ce user
+         if (!$this->isHighEnoughToEdit($user)) {
+             $this->addFlash(
+                 ReturnMsgsUtils::CLASS_ERROR,
+                 ReturnMsgsUtils::AUTHORIZATION_ERROR
+             );
+             return $this->redirectToRoute('backoffice/users');
+         }*/
+
+        // formulaire
+        $form = $this->createForm(ChangePasswordType::class);
+        $form->handleRequest($this->tools->requestStack->getCurrentRequest());
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                // confirmation fausse
+                $rawNewPassword = $form->get('newPassword')->getData();
+                $rawConfirmPassword = $form->get('confirmPassword')->getData();
+
+                if ($rawNewPassword != $rawConfirmPassword) {
+                    $this->addFlash(
+                        ReturnMsgsUtils::CLASS_ERROR,
+                        ReturnMsgsUtils::PASSWORD_MISSMATCH
+                    );
+                } else { // confirmation ok
+                    // update du password
+                    $user->setRawPassword($rawNewPassword);
+                    $user->setPassword($passwordEncoder->encodePassword($user, $user->getRawPassword()));
+
+                    $this->getDoctrine()->getManager()->persist($user);
+                    $this->getDoctrine()->getManager()->flush();
+
+                    // message retour
+                    $this->addFlash(
+                        ReturnMsgsUtils::CLASS_SUCCESS,
+                        ReturnMsgsUtils::PASSWORD_UPDATE_SUCCESS
+                    );
+                }
+            }
+        }
     }
 }

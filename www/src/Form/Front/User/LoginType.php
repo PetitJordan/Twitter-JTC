@@ -6,7 +6,7 @@
  * Time: 13:28
  */
 
-namespace App\Form\User;
+namespace App\Form\Front\User;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;

@@ -6,12 +6,11 @@
  * Time: 15:23
  */
 
-namespace App\Form\User;
+namespace App\Form\Front\User;
 
 use App\Entity\User\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -53,9 +52,6 @@ class EditType extends AbstractType
             ->add('phone', TextType::class, array(
                 'required'      => false,
                 'label'         => 'Téléphone'
-            ))
-            ->add('optin', \App\Form\User\Optin\EditType::class, array(
-                'label'         => false
             ))
             // bouton
             ->add('submit', SubmitType::class, array(

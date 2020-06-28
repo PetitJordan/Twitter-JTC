@@ -5,15 +5,16 @@ namespace App\Controller\Backoffice;
 
 
 use App\Controller\Front\FrontController;
+use App\Controller\Front\TwitterController;
 use App\Entity\Keyword\Request;
 use App\Repository\Keyword\RequestRepository;
 use App\Service\TwitterService;
 
 class TrendsController extends FrontController
 {
-    public function getTrends(TwitterService $twitterService)
+    public function getTrends(TwitterController $twitterController)
     {
-        $trendings = $twitterService->getTrendsPlace();
+        $trendings = $twitterController->getTrendsPlace();
         $trendingsWithVolume = array();
         foreach ($trendings['0']->trends as $trend){
             if (isset($trend->tweet_volume)){

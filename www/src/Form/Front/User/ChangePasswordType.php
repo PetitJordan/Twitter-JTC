@@ -6,7 +6,7 @@
  * Time: 11:22
  */
 
-namespace App\Form\User;
+namespace App\Form\Front\User;
 
 use App\Validator\Constraints\Password;
 use Symfony\Component\Form\AbstractType;

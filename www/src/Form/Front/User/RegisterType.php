@@ -6,7 +6,7 @@
  * Time: 14:22
  */
 
-namespace App\Form\User;
+namespace App\Form\Front\User;
 
 use App\Entity\User\Optin;
 use App\Entity\User\User;

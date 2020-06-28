@@ -56,5 +56,5 @@ security:
     # le super admin des droits de l'admin, etc...
     role_hierarchy:
         ROLE_USER: ROLE_USER
-        ROLE_ADMIN:       ROLE_USER1
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_USER1]
+        ROLE_ADMIN: ROLE_USER
+

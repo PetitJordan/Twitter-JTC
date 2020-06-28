@@ -35,6 +35,24 @@ register:
   path: inscription
   controller: App\Controller\Front\UserController:register
 
+front/myaccount:
+  path: mon_compte
+  controller: App\Controller\Front\UserController:myAccount
+
+front/user/edit:
+  path: front/user/{id}/edit
+  controller: App\Controller\Front\UserController:editUser
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+front/user/change-password:
+  path: front/user/{id}/change-password
+  controller: App\Controller\Front\UserController:changePassword
+  requirements:
+    id: '[0-9]+'
+
 ##########################################################
 ################# KEYWORD
 
@@ -202,19 +220,6 @@ backoffice/user/edit:
 backoffice/user/change-password:
   path: backoffice/user/{id}/change-password
   controller: App\Controller\Backoffice\UserController:changePassword
-  requirements:
-    id: '[0-9]+'
-
-##########################################################
-################# OPTIN
-
-backoffice/user/optins:
-  path: backoffice/user/optins
-  controller: App\Controller\Backoffice\User\OptinController:list
-
-backoffice/user/optin/delete:
-  path: backoffice/user/optin/{id}/delete/
-  controller: App\Controller\Backoffice\User\OptinController:delete
   requirements:
     id: '[0-9]+'
 
