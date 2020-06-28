@@ -65,10 +65,6 @@ class RegisterType extends AbstractType
                 'required'      => true,
                 'label'         => 'Pseudo twitter',
             ))
-            ->add('twitter_password', PasswordType::class, array(
-                'required'      => true,
-                'label'         => 'Mot de passe twitter',
-            ))
             ->add('birthdate', BirthdayType::class, array(
                 'required'      => false,
                 'label'         => 'Date de naissance',
