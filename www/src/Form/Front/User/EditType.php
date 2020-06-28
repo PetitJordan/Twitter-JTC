@@ -44,6 +44,10 @@ class EditType extends AbstractType
                 'required'      => true,
                 'label'         => 'Email*'
             ))
+            ->add('twitter_name', TextType::class, array(
+                'required'      => true,
+                'label'         => 'Pseudo twitter*'
+            ))
             ->add('birthdate', BirthdayType::class, array(
                 'required'      => false,
                 'label'         => 'Date de naissance',

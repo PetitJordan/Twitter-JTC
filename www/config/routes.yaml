@@ -113,31 +113,6 @@ front/twitter:
     requirements:
       id: '[0-9]+'
 
-##########################################################
-################# CUSTOMERS
-
-###################
-###CUSTOMERS DETAILS
-front/customers-details:
-  path: /customers/{slug}
-  controller: App\Controller\Front\CustomerController:readCustomerDetails
-  defaults:
-    id: 0
-    requirements:
-      id: '[0-9]+'
-
-###################
-###REALISATIONS
-front/realisations:
-  path: /realisations
-  controller: App\Controller\Front\CustomerController:readRealisation
-
-###################
-###REALISATIONS
-front/realisation-filtre:
-  path: /realisations-filtre
-  controller: App\Controller\Front\CustomerController:filtreExpertiseAjax
-
 
 
 ###########################################################################################
@@ -223,30 +198,4 @@ backoffice/user/change-password:
   requirements:
     id: '[0-9]+'
 
-##########################################################
-################# CUSTOMMER / TRUSTED CUSTOMMER / EXPERTISE
-
-###################
-### CUSTOMER
-backoffice/customers:
-  path: backoffice/customers
-  controller: App\Controller\Backoffice\CustomerController:listCustomer
-
-backoffice/customer/edit:
-  path: backoffice/customer/{id}/edit
-  controller: App\Controller\Backoffice\CustomerController:editCustomer
-  defaults:
-    id: 0
-  requirements:
-    id: '[0-9]+'
-
-backoffice/customer/delete:
-  path: backoffice/customer/{id}/delete
-  controller: App\Controller\Backoffice\CustomerController:deleteCustomer
-  defaults:
-    id: 0
-  requirements:
-    id: '[0-9]+'
-
-    
 

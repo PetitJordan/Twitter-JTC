@@ -148,10 +148,6 @@ class User implements UserInterface
      */
     private $twitter_name;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $twitter_password;
 
     /****************************************************************************
      * CONSTRUCT
@@ -499,17 +495,4 @@ class User implements UserInterface
 
         return $this;
     }
-
-    public function getTwitterPassword(): ?string
-    {
-        return $this->twitter_password;
-    }
-
-    public function setTwitterPassword(string $twitter_password): self
-    {
-        $this->twitter_password = $twitter_password;
-
-        return $this;
-    }
-
 }

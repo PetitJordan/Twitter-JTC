@@ -24,19 +24,6 @@ use Symfony\Component\Security\Http\SecurityEvents;
 
 class UserController extends FrontController
 {
-
-    public function myAccount(UserRepository $userRepository)
-    {
-        // recupere les users
-        $users = $userRepository->findAll();
-
-        // rendu template
-        return $this->render('front/user/myaccount.html.twig', array(
-            'users'         => $users
-        ));
-    }
-
-
     /**
      * Page de login
      * @param AuthenticationUtils $authenticationUtils

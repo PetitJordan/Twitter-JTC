@@ -36,7 +36,7 @@
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('front/user/edit', {'id': user.id}) }}">Mon compte</a>
+                    <a class="nav-link" href="{{ path('front/user/edit', {'id': app.user.id}) }}">Mon compte</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('logout') }}">Déconnexion</a>
