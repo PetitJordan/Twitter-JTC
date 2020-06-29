@@ -31,9 +31,10 @@ Cloner le projet :
  - git clone git@github.com:Jisiiss/Twitter-JTC.git
 
 
-Se rendre ensuite dans un répertoire de travail puis lancer les commandes
-suivantes à la racine du projet : 
-
+Se rendre ensuite dans son répertoire de travail via un 
+```
+cd Twitter-JTC 
+```
 
 - Build les containers docker
 ```
@@ -59,6 +60,7 @@ cd api_twitter
 ```
 composer install
 composer require abraham/twitteroauth
+php bin/console d:s:u --force
 ```
 - Ensuite, en dehors du container, dans le répertoire www du projet installer yarn et lancer encore
 ```
