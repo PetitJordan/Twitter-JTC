@@ -35,32 +35,32 @@ Se rendre ensuite dans un répertoire de travail puis lancer les commandes
 suivantes à la racine du projet : 
 
 
-### Build les containers docker
+- Build les containers docker
 ```
 docker-compose up --build
 ```
-### Lancer les container
+- Lancer les container
 ```
 docker-compose up -d
 ```
 Se rendre ensuite dans le container php et lancer les commandes
 suivantes : 
 
-### Pour afficher la liste des container
+- Pour afficher la liste des container
 ```
 docker ps -a
 ```
-### Pour se positionner dans le container php (sur windows possibilité d'utiliser kitematic pour que ce soit plus simple)
+- Pour se positionner dans le container php (sur windows possibilité d'utiliser kitematic pour que ce soit plus simple)
 ```
 docker exec -it [docker_php_id] bash
 cd api_twitter
 ```
-### Installer les modules
+- Installer les modules
 ```
 composer install
 composer require abraham/twitteroauth
 ```
-### Ensuite, en dehors du container, dans le répertoire www du projet installer yarn et lancer encore
+- Ensuite, en dehors du container, dans le répertoire www du projet installer yarn et lancer encore
 ```
 yarn install 
 yarn encore dev --watch
