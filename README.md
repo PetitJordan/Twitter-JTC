@@ -15,51 +15,54 @@
 
 ## Technologies requises
 - Docker version 19.03.5 minimum
+- yarn
+- nodejs
+- composer
 
 ## Technologies utilisées
 - Symfony 4 (Framework BackEnd)
 - Bootstrap (FrontEnd)
 - MySQL (Base de données)
 
-Voir le fichier package.json du Back et du Front pour voir les dépendances utilisées
-ou sur Github > Insights > Dependency graph
-
 ## Premier lancement
 
-Cloner le repository du projet avec l'adresse suivante:
+Cloner le projet :
 
-```https://github.com/Jisiiss/Twitter```
+git clone git@github.com:Jisiiss/Twitter-JTC.git
 
-Se rendre ensuite sur le terminal / invite de commande puis lancer les commandes
-suivantes en ayant installé Docker au préalable : 
+
+Se rendre ensuite dans un répertoire de travail puis lancer les commandes
+suivantes à la racine du projet : 
 
 ```
-# First launch
-docker-compose up --build -d
+# Build les containers docker
+docker-compose up --build
 
-# Launch
-docker-compose build
+# Lancer les container
 docker-compose up -d
 
-# Pour exécuter les outils dans le docker utilisé
-docker exec -it [docker_id] bash
+Se rendre ensuite dans le container php et lancer les commandes
+suivantes : 
 
-# À installer dans www
+# Pour afficher la liste des container
+docker ps -a
+
+# Pour se positionner dans le container php (sur windows possibilité d'utiliser kitematic pour que ce soit plus simple)
+docker exec -it [docker_php_id] bash
+cd api_twitter
+
+# Installer les modules
+composer install
+composer require abraham/twitteroauth
+
+Ensuite, en dehors du container, dans le répertoire www du projet installer yarn et lancer encore
 yarn install 
 yarn encore dev --watch
 
-# À installer dans le docker php
-composer install 
-composer require abraham/twitteroauth
-
-
-```
-
 ## URL
-Une fois les commandes Docker exécutées, le projet devrait fonctionner et le client
-accessible sur le navigateur à l'adresse du serveur php
+Une fois les commandes exécutées, le projet devrait fonctionner et être accessible à l'adresse
+
 ```
-# php server
 127.0.0.1:9000
 ```
 
@@ -69,7 +72,6 @@ accessible sur le navigateur à l'adresse du serveur php
 127.0.0.1:9000/keywords
 127.0.0.1:9000/keywords/{id}/edit
 127.0.0.1:9000/keywords/{id}/delete
-127.0.0.1:9000/keywords/{id}/request
 
 # Trends 
 127.0.0.1:9000/trends
@@ -80,7 +82,6 @@ accessible sur le navigateur à l'adresse du serveur php
 127.0.0.1:9000/inscription
 
 # Utilisateurs 
-127.0.0.1:9000/mon_compte
 127.0.0.1:9000/front/user/edit
 127.0.0.1:9000/front/user/{id}/change-password
 
