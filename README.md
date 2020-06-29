@@ -2,7 +2,6 @@
 
 ### Front-end: Tweet analytics Dashboard
 - :heavy_check_mark: Sign up / Login.
-- :heavy_check_mark: User twitter account setup.
 - :spiral_notepad: List all posted tweets with the setup account.
 - :eyes: Datavizualisation of the setup keyword to display the differences with time (increase or decrease).
 
@@ -39,14 +38,20 @@ suivantes en ayant installé Docker au préalable :
 docker-compose up --build -d
 
 # Launch
+docker-compose build
 docker-compose up -d
 
 # Pour exécuter les outils dans le docker utilisé
 docker exec -it [docker_id] bash
 
-# Outils à installer 
+# À installer dans www
 yarn install 
+yarn encore dev --watch
+
+# À installer dans le docker php
 composer install 
+composer require abraham/twitteroauth
+
 
 ```
 
@@ -62,5 +67,24 @@ accessible sur le navigateur à l'adresse du serveur php
 ```
 # Keyword url
 127.0.0.1:9000/keywords
+127.0.0.1:9000/keywords/{id}/edit
+127.0.0.1:9000/keywords/{id}/delete
+127.0.0.1:9000/keywords/{id}/request
+
+# Trends 
+127.0.0.1:9000/trends
+127.0.0.1:9000/trends/{name}/visualize
+
+# Login
+127.0.0.1:9000/identification
+127.0.0.1:9000/inscription
+
+# Utilisateurs 
+127.0.0.1:9000/mon_compte
+127.0.0.1:9000/front/user/edit
+127.0.0.1:9000/front/user/{id}/change-password
+
+# Tweet
+127.0.0.1:9000/twitter
 ```
 
