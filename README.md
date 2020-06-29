@@ -32,9 +32,9 @@ Cloner le projet :
 
 
 Se rendre ensuite dans son répertoire de travail via un 
-- cd Twitter-JTC 
-puis lancer les commandes suivantes : 
-
+```
+cd Twitter-JTC 
+```
 
 - Build les containers docker
 ```
