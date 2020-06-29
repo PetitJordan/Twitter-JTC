@@ -17,6 +17,7 @@ use App\Service\TwitterService;
 
 class HomeController extends FrontController
 {
+    // Retourne les Tweets du compte Twitter renseigné
     public function home(TwitterService $twitterService)
     {
         $pageName = 'home';

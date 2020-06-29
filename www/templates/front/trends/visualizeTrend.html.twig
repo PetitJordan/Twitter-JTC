@@ -19,8 +19,7 @@
                 ({{ entry.createdAt.date|date("m") }} -1),
                     {{ entry.createdAt.date|date("d") }},
                     {{ entry.createdAt.date|date("H") }},
-                    {{ entry.createdAt.date|date("i") }},
-                    {{ entry.createdAt.date|date("s") }})),
+                    {{ entry.createdAt.date|date("i") }})),
                 {{ entry.nbTweet }}],
             {% endfor %}
         ]);
