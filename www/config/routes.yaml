@@ -84,7 +84,7 @@ keyword/requestKeyword:
 ################# TRENDS
 trends:
   path: trends
-  controller: App\Controller\Backoffice\TrendsController:getTrends
+  controller: App\Controller\Front\TrendsController:getTrends
   defaults:
     id: 0
   requirements:
@@ -92,7 +92,7 @@ trends:
 
 trends/visualize:
   path: trends/{name}/visualize
-  controller: App\Controller\Backoffice\TrendsController:visualizeTrend
+  controller: App\Controller\Front\TrendsController:visualizeTrend
   defaults:
     id: 0
   requirements:
