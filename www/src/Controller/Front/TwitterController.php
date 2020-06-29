@@ -7,21 +7,15 @@ use App\Repository\User\UserRepository;
 
 class TwitterController extends FrontController
 {
-    public function showTweets($id, UserRepository $userRepository)
+    public function showTweets()
     {
-        $user = null;
-        // charge ou nouveau user
-
-        $user = $userRepository->find($id);
-
         $pageName = 'home';
-        $mesTweets = $this->getTweets($user->getTwitterName());
+        $mesTweets = $this->getTweets($this->getUser()->getTwitterName());
 
         // rendu template
         return $this->render('front/twitter/twitter.html.twig', array(
             'pageName' => $pageName,
             'tweets' => $mesTweets,
-            'user' => $user
         ));
     }
 

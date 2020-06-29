@@ -106,26 +106,9 @@ class UserController extends FrontController
         ));
     }
 
-    public function editUser($id, UserPasswordEncoderInterface $passwordEncoder, UserRepository $userRepository)
+    public function editUser(UserPasswordEncoderInterface $passwordEncoder, UserRepository $userRepository)
     {
-        $user = null;
-        // charge ou nouveau user
-        if ($id) {
-            $user = $userRepository->find($id);
-           if ($user) {
-                // check que l'admin peu editer ce user
-                if (!$this->isHighEnoughToEdit($user)) {
-                    $this->addFlash(
-                        ReturnMsgsUtils::CLASS_ERROR,
-                        ReturnMsgsUtils::AUTHORIZATION_ERROR
-                    );
-                    return $this->redirectToRoute('front/user/edit');
-                }
-            }
-        }
-        if (!$user) {
-            $user = new User();
-        }
+        $user = $this->getUser();
 
         // formulaire
         $form = $this->createForm(EditType::class, $user);

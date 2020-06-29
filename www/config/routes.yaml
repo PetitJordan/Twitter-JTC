@@ -40,12 +40,8 @@ front/myaccount:
   controller: App\Controller\Front\UserController:myAccount
 
 front/user/edit:
-  path: front/user/{id}/edit
+  path: front/user/edit
   controller: App\Controller\Front\UserController:editUser
-  defaults:
-    id: 0
-  requirements:
-    id: '[0-9]+'
 
 front/user/change-password:
   path: front/user/{id}/change-password
