@@ -35,6 +35,54 @@ register:
   path: inscription
   controller: App\Controller\Front\UserController:register
 
+##########################################################
+################# KEYWORD
+
+keywords:
+  path: keywords
+  controller: App\Controller\Backoffice\KeywordController:listKeyword
+
+keyword/edit:
+  path: keyword/{id}/edit
+  controller: App\Controller\Backoffice\KeywordController:editKeyword
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+keyword/delete:
+  path: keyword/{id}/delete
+  controller: App\Controller\Backoffice\KeywordController:deleteKeyword
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+keyword/requestKeyword:
+      path: keyword/{id}/request
+      controller: App\Controller\Backoffice\KeywordController:requestKeyword
+      defaults:
+        id: 0
+      requirements:
+        id: '[0-9]+'
+
+##########################################################
+################# TRENDS
+trends:
+  path: trends
+  controller: App\Controller\Backoffice\TrendsController:getTrends
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
+
+trends/visualize:
+  path: trends/{name}/visualize
+  controller: App\Controller\Backoffice\TrendsController:visualizeTrend
+  defaults:
+    id: 0
+  requirements:
+    id: '[0-9]+'
 
 ##########################################################
 ################# CUSTOMERS

@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.3'
 services:
   apache:
     build: .docker/apache
@@ -32,3 +32,11 @@ services:
       - ./www:/home/wwwroot/api_twitter:cached
     depends_on:
       - mysql
+
+  cron:
+    build: .docker/cron
+    container_name: api_twitter_cron
+    volumes:
+      - ./www:/home/wwwroot/api_twitter:cached
+    depends_on:
+      - apache
