@@ -19,23 +19,22 @@ class RequestRepository extends ServiceEntityRepository
         parent::__construct($registry, Request::class);
     }
 
-    // /**
-    //  * @return Request[] Returns an array of Request objects
-    //  */
-
-
-    /*
-    public function findOneBySomeField($value): ?Request
+    // Enregistre le trend avec son volume
+    public function createTrend($trendName, $trendVolume)
     {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 
+        $trend = new Request();
+        $trend->setName($trendName);
+        $trend->setNbTweet($trendVolume);
+
+        $this->_em->persist($trend);
+
+        $this->_em->flush();
+
+        return;
+    }
+
+    // Récupère toutes les entrées d'un trend
     public function findEntry($trendName)
     {
 
@@ -46,16 +45,30 @@ class RequestRepository extends ServiceEntityRepository
 
         $query = $qb->getQuery()->getResult();
         return $query;
-//        $conn = $this->getEntityManager()->getConnection();
-//
-//        $sql = 'SELECT * FROM request r where r.name = :trendName order by r.id desc limit 1';
-//        $stmt = $conn->prepare($sql);
-//        $stmt->execute(['trendName' => $trendName]);
-//      dump($stmt->fetch());die;
-//
-//
-//        // returns an array of Request objects
-//        return $stmt->fetch();
-
     }
+
+    // Récupère les dernieres entrées des trends du jour
+    public function findCurrentTrends()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'Select r.name, r.nb_tweet 
+                from api_twitter.request r
+                inner join 
+                (
+                    Select max(r2.id) as LatestDate , r2.name
+                    from api_twitter.request r2
+                    Group by r2.name
+                ) as SubMax 
+                on r.id = SubMax.LatestDate
+                and r.name = SubMax.name
+                where created_at >= CURDATE() and
+                  created_at < CURDATE() +1 ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        // returns an array of Request objects
+        return $stmt->fetchAll();
+    }
+
 }

@@ -12,14 +12,11 @@ use App\Repository\User\UserRepository;
 
 class HomeController extends FrontController
 {
-    public function home(UserRepository $userRepository)
-    {
-        // recupere les users
-        $users = $userRepository->findAll();
 
+    public function home()
+    {
         // rendu template
         return $this->render('front/home/home.html.twig', array(
-            'users'         => $users
         ));
     }
 }

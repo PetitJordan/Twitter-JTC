@@ -8,12 +8,12 @@
                 <th>Hashtag</th>
                 <th>Nombre de tweets</th>
             </tr>
-            {% for name,volume in trendings %}
+            {% for trend in trendings %}
                 <tr>
-                    <td><a href="{{ path('trends/visualize', {'name': name}) }}" title="Voir l'évolution">{{ name }}</a></td>
+                    <td><a href="{{ path('trends/visualize', {'name': trend.name}) }}" title="Voir l'évolution">{{ trend.name }}</a></td>
                     <td>
                         <small>
-                            {{ volume }}
+                            {{ trend.nb_tweet }}
                         </small>
                     </td>
                 </tr>
