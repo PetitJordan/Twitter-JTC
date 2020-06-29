@@ -28,38 +28,45 @@
 
 Cloner le projet :
 
-git clone git@github.com:Jisiiss/Twitter-JTC.git
+ - git clone git@github.com:Jisiiss/Twitter-JTC.git
 
 
 Se rendre ensuite dans un répertoire de travail puis lancer les commandes
 suivantes à la racine du projet : 
 
-```
+
 # Build les containers docker
+```
 docker-compose up --build
-
+```
 # Lancer les container
+```
 docker-compose up -d
-
+```
 Se rendre ensuite dans le container php et lancer les commandes
 suivantes : 
 
 # Pour afficher la liste des container
+```
 docker ps -a
-
+```
 # Pour se positionner dans le container php (sur windows possibilité d'utiliser kitematic pour que ce soit plus simple)
+```
 docker exec -it [docker_php_id] bash
 cd api_twitter
-
+```
 # Installer les modules
+```
 composer install
 composer require abraham/twitteroauth
-
-Ensuite, en dehors du container, dans le répertoire www du projet installer yarn et lancer encore
+```
+# Ensuite, en dehors du container, dans le répertoire www du projet installer yarn et lancer encore
+```
 yarn install 
 yarn encore dev --watch
-
+```
 ## URL
+```
 Une fois les commandes exécutées, le projet devrait fonctionner et être accessible à l'adresse : 
 127.0.0.1:9000
 ```
