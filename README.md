@@ -60,9 +60,7 @@ yarn install
 yarn encore dev --watch
 
 ## URL
-Une fois les commandes exécutées, le projet devrait fonctionner et être accessible à l'adresse
-
-```
+Une fois les commandes exécutées, le projet devrait fonctionner et être accessible à l'adresse : 
 127.0.0.1:9000
 ```
 
