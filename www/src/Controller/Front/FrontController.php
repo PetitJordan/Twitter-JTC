@@ -8,6 +8,7 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\User\User;
 use App\Utils\Breadcrumb;
 use App\Utils\Tools;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,6 +23,23 @@ class FrontController extends AbstractController
     {
         $this->tools = $tools;
         $this->breadcrumb = $breadcrumb;
+    }
+
+    public function hasEnoughRole($role)
+    {
+        $hasAccess = $this->isGranted($role);
+        return $hasAccess;
+//        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+    }
+
+    public function isHighEnoughToEdit(User $user) {
+        $isOk = false;
+        foreach ($user->getRoles() as $role) {
+            if ($this->hasEnoughRole($role)) {
+                $isOk = true;
+            }
+        }
+        return $isOk;
     }
 
     public function test()

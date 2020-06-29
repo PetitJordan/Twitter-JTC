@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Snilius\\Twig\\' => array($vendorDir . '/snilius/twig-sort-by-field/src'),
+    'Abraham\\TwitterOAuth\\' => array($vendorDir . '/abraham/twitteroauth/src'),
 );

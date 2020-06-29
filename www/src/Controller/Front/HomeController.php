@@ -8,24 +8,15 @@
 
 namespace App\Controller\Front;
 
-
-use App\Service\TwitterService;
-
-/*
- * @param TwitterService $twitterService
- */
+use App\Repository\User\UserRepository;
 
 class HomeController extends FrontController
 {
-    public function home(TwitterService $twitterService)
-    {
-        $pageName = 'home';
-        $mesTweets = $twitterService->getTweets();
 
+    public function home()
+    {
         // rendu template
         return $this->render('front/home/home.html.twig', array(
-            'pageName'  => $pageName,
-            'tweets' => $mesTweets
         ));
     }
 }

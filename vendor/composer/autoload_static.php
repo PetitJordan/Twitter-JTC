@@ -11,12 +11,20 @@ class ComposerStaticInita5bfa0c3499a45ba7503086c8b4d0c77
         array (
             'Snilius\\Twig\\' => 13,
         ),
+        'A' => 
+        array (
+            'Abraham\\TwitterOAuth\\' => 21,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Snilius\\Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/snilius/twig-sort-by-field/src',
+        ),
+        'Abraham\\TwitterOAuth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/abraham/twitteroauth/src',
         ),
     );
 

@@ -24,26 +24,15 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 class EventsSubscriber implements EventSubscriber
 {
     protected $userSubscriber;
-    protected $optinSubscriber;
 
 
-    protected $customerMediaSubscriber;
-    protected $trustedCustomerLogoSubscriber;
 
 
     public function __construct(
-        UserSubscriber $userSubscriber,
-        OptinSubscriber $optinSubscriber,
-
-        MediaCustomerSubscriber $customerMediaSubscriber,
-        TrustedCustomerLogoSubscriber $trustedCustomerLogoSubscriber
+        UserSubscriber $userSubscriber
 
     ) {
         $this->userSubscriber = $userSubscriber;
-        $this->optinSubscriber = $optinSubscriber;
-
-        $this->customerMediaSubscriber = $customerMediaSubscriber;
-        $this->trustedCustomerLogoSubscriber = $trustedCustomerLogoSubscriber;
     }
 
     /** @var PreUpdateEventArgs $preUpdateEventArgs */
@@ -78,16 +67,6 @@ class EventsSubscriber implements EventSubscriber
             $this->userSubscriber->onPreUpdate($this->preUpdateEventArgs);
         }
 
-        // si customerMedia
-        if ($entity instanceof CustomerMedia) {
-            $this->customerMediaSubscriber->onPreUpdate($this->preUpdateEventArgs);
-        }
-
-        // si trustedCustomerLogo
-        if ($entity instanceof TrustedCustomer) {
-            $this->trustedCustomerLogoSubscriber->onPreUpdate($this->preUpdateEventArgs);
-        }
-
     }
 
     /**
@@ -99,17 +78,6 @@ class EventsSubscriber implements EventSubscriber
     {
         // entite concernee
         $entity = $args->getEntity();
-
-
-        // si customerMedia
-        if ($entity instanceof CustomerMedia) {
-            $this->customerMediaSubscriber->onPostRemove($args);
-        }
-
-        // si trustedCustomerLogo
-        if ($entity instanceof TrustedCustomer) {
-            $this->trustedCustomerLogoSubscriber->onPostRemove($args);
-        }
     }
 
     /**
@@ -138,11 +106,6 @@ class EventsSubscriber implements EventSubscriber
         // Si User
         if ($entity instanceof User) {
             $this->userSubscriber->onPrePersist($args);
-        }
-
-        // Si Optin
-        if ($entity instanceof Optin) {
-            $this->optinSubscriber->onPrePersist($args);
         }
     }
 

@@ -3,69 +3,76 @@
 {% block body %}
     <div class="container">
         {{ form_start(form) }}
-            <div class="form-group">
-                <div class="radio-inline-block">
-                    {{ form_widget(form.gender) }}
-                </div>
+        <div class="form-group">
+            <div class="radio-inline-block">
+                {{ form_widget(form.gender) }}
             </div>
+        </div>
 
-            <div class="form-group">
-                <span class="compulsory">{{ form_label(form.lastname) }}</span>
-                {{ form_widget(form.lastname) }}
+        <div class="form-group">
+            <span class="compulsory">{{ form_label(form.lastname) }}</span>
+            {{ form_widget(form.lastname) }}
+        </div>
+
+        <div class="form-group">
+            <span class="compulsory">{{ form_label(form.firstname) }}</span>
+            {{ form_widget(form.firstname) }}
+        </div>
+
+        <div class="form-group">
+            <span class="compulsory">{{ form_label(form.email) }}</span>
+            {{ form_widget(form.email) }}
+            <div class="has-error">
+                {{ form_errors(form.email) }}
             </div>
+        </div>
 
-            <div class="form-group">
-                <span class="compulsory">{{ form_label(form.firstname) }}</span>
-                {{ form_widget(form.firstname) }}
+        {% for item in form.rawPassword %}
+            <div class="form-group password-seeable">
+                <span class="compulsory">{{ form_label(item) }}</span>
+                {{ form_widget(item) }}
+                <i class="far fa-eye-slash"></i>
             </div>
+            <div class="has-error">
+                <div class="form-error-message">{{ form_errors(item) }}</div>
+            </div>
+        {% endfor %}
 
-            <div class="form-group">
-                <span class="compulsory">{{ form_label(form.email) }}</span>
-                {{ form_widget(form.email) }}
+        <div class="form-group">
+            <span class="compulsory">{{ form_label(form.twitter_name) }}</span>
+            {{ form_widget(form.twitter_name) }}
+        </div>
+
+        <div class="datepicker birthdaypicker">
+            {{ form_label(form.birthdate) }}
+            {{ form_widget(form.birthdate) }}
+            <div class="datepicker-widget-wrapper">
+                <div class="birthdaypicker-widget"></div>
+                <i class="far fa-calendar-alt"></i>
+            </div>
+        </div>
+        {% if form_errors(form.birthdate) %}
+            <div class="has-error">
+                {{ form_errors(form.birthdate) }}
+            </div>
+        {% endif %}
+
+        {{ form_row(form.phone) }}
+
+        <div class="form-group">
+            <div class="checkbox-inline">
+                {{ form_widget(form.rules) }}
+                <label for="stackedCheck1" class="form-check-label">J'accepte les conditions d'utilisations</label>
+            </div>
+            {% if form_errors(form.rules) %}
                 <div class="has-error">
-                    {{ form_errors(form.email) }}
-                </div>
-            </div>
-
-            {% for item in form.rawPassword %}
-                <div class="form-group password-seeable">
-                    <span class="compulsory">{{ form_label(item) }}</span>
-                    {{ form_widget(item) }}
-                    <i class="far fa-eye-slash"></i>
-                </div>
-                <div class="has-error"><div class="form-error-message">{{ form_errors(item) }}</div></div>
-            {% endfor %}
-
-            <div class="datepicker birthdaypicker">
-                {{ form_label(form.birthdate) }}
-                {{ form_widget(form.birthdate) }}
-                <div class="datepicker-widget-wrapper">
-                    <div class="birthdaypicker-widget"></div>
-                    <i class="far fa-calendar-alt"></i>
-                </div>
-            </div>
-            {% if form_errors(form.birthdate) %}
-                <div class="has-error">
-                    {{ form_errors(form.birthdate) }}
+                    {{ form_errors(form.rules) }}
                 </div>
             {% endif %}
+            <div class="form-error-message">Veuillez accepter le règlement</div>
+        </div>
 
-            {{ form_row(form.phone) }}
-
-            <div class="form-group">
-                <div class="checkbox-inline">
-                    {{ form_widget(form.rules) }}
-                    <label for="stackedCheck1" class="form-check-label">J'accepte les conditions d'utilisations</label>
-                </div>
-                {% if form_errors(form.rules) %}
-                    <div class="has-error">
-                        {{ form_errors(form.rules) }}
-                    </div>
-                {% endif %}
-                <div class="form-error-message">Veuillez accepter le règlement</div>
-            </div>
-
-            <button type="submit" class="btn btn-success btn-save">Créer mon compte</button>
+        <button type="submit" class="btn btn-success btn-save">Créer mon compte</button>
 
         {{ form_end(form) }}
     </div>
@@ -76,7 +83,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $(document).on({
-                click: function() {
+                click: function () {
                     $('input[name="register[rules]"]').parents('.form-group').removeClass('has-error');
                     if (!$('input[name="register[rules]"]').prop('checked')) {
                         $('input[name="register[rules]"]').parents('.form-group').addClass('has-error');

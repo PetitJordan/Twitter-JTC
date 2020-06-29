@@ -43,11 +43,11 @@
     </div>
 
     {% block header %}
-        {% include 'include/header.html.twig' %}
+        {% include 'front/include/header.html.twig' %}
     {% endblock %}
     {% block body %}
     {% endblock %}
-    {% block footer %}{% include 'include/footer.html.twig' %}{% endblock %}
+    {% block footer %}{% include 'front/include/footer.html.twig' %}{% endblock %}
     {% block javascripts %}
         {{ encore_entry_script_tags('plugins') }}
         {{ encore_entry_script_tags('app') }}

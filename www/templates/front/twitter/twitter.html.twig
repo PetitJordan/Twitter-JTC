@@ -1,0 +1,57 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+    <div id="home">
+        <h2> Mes derniers tweets</h2>
+        <table class="table table-bordered">
+            {% for tweet in tweets %}
+                <tr>
+                    <td>{{ tweet.text }}</td>
+                    <td>
+                        <small>
+                            <time class="timeago" datetime="{{ tweet.created_at|date("c") }}"></time>
+                        </small>
+                    </td>
+                </tr>
+            {% endfor %}
+            </ul>
+        </table>
+    </div>
+
+    {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://timeago.yarp.com/jquery.timeago.js"></script>
+        <script>
+            (function (factory) {
+                if (typeof define === 'function' && define.amd) {
+                    define(['jquery'], factory);
+                } else if (typeof module === 'object' && typeof module.exports === 'object') {
+                    factory(require('jquery'));
+                } else {
+                    factory(jQuery);
+                }
+            }(function (jQuery) {
+                // French
+                jQuery.timeago.settings.strings = {
+                    // environ ~= about, it's optional
+                    prefixAgo: "il y a",
+                    prefixFromNow: "d'ici",
+                    seconds: "moins d'une minute",
+                    minute: "environ une minute",
+                    minutes: "environ %d minutes",
+                    hour: "environ une heure",
+                    hours: "environ %d heures",
+                    day: "environ un jour",
+                    days: "environ %d jours",
+                    month: "environ un mois",
+                    months: "environ %d mois",
+                    year: "un an",
+                    years: "%d ans"
+                };
+            }));
+            $(document).ready(function (){
+                $("time.timeago").timeago();
+            });
+        </script>
+    {% endblock %}
+{% endblock %}
