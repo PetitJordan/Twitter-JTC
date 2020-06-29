@@ -60,15 +60,12 @@ cd api_twitter
 ```
 composer install
 composer require abraham/twitteroauth
+php bin/console d:s:u --force
 ```
 - Ensuite, en dehors du container, dans le répertoire www du projet installer yarn et lancer encore
 ```
 yarn install 
 yarn encore dev --watch
-```
-- Et enfin mettre à jour la base de données
-```
-php bin/console d:s:u --force
 ```
 ## URL
 ```
