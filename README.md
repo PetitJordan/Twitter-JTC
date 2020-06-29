@@ -66,6 +66,10 @@ composer require abraham/twitteroauth
 yarn install 
 yarn encore dev --watch
 ```
+- Et enfin mettre à jour la base de données
+```
+php bin/console d:s:u --force
+```
 ## URL
 ```
 Une fois les commandes exécutées, le projet devrait fonctionner et être accessible à l'adresse : 
