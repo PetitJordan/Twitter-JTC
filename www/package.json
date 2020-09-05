@@ -20,7 +20,7 @@
         "infinite-scroll": "^3.0.6",
         "jquery": "^3.4.1",
         "jquery-ui": "^1.12.1",
-        "node-sass": "^4.13.0",
+        "node-sass": "^4.13.1",
         "popper.js": "^1.15.0",
         "sass-loader": "^7.0.1"
     }
